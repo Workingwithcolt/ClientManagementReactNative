@@ -1,6 +1,9 @@
 import { urlHead } from "./extrapropertise";
 
 export const fetchHelper = async (endpoint, method, data) => {
+    if(data){
+        data = JSON.stringify(data)
+    }
     try {
         var response = await fetch(`http://localhost:3000/${endpoint}`, {
             method: method,

@@ -36,7 +36,7 @@ export const Users = ({ navigation }) => {
     }
     const getValueToSearch = (current) => {
         return (
-            current.name
+            current.name || ""
         )
     }
 

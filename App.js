@@ -8,7 +8,7 @@ import Homepage from './src/screens/Homepage';
 import Verification from './src/screens/Verification';
 import GenericBodyCard from './src/GenericComponent/GenericBodyCard';
 import { Users } from './src/screens/Users';
-import { Accounts } from './src/screens/Account';
+import { Projects } from './src/screens/Projects';
 
 
 const Stack = createNativeStackNavigator();
@@ -23,7 +23,7 @@ const UserComponent = ({navigation}) => {
 const AccountComponent = ({navigation}) => {
   return (
     <GenericBodyCard>
-      <Accounts navigation={navigation}/>
+      <Projects navigation={navigation}/>
     </GenericBodyCard>
   )
 }
@@ -91,7 +91,7 @@ export default function App() {
             }
           }
         />
-        <Stack.Screen name="Accounts" component={
+        <Stack.Screen name="Projects" component={
           AccountComponent}
           options={
             {

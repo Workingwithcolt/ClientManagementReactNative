@@ -20,7 +20,7 @@ function DataView({ queryFunction, queryKey, getSearchableValue, Card, DetailedE
             return valueToSearchIn.includes(valueToSearch);
         })
     }
-
+console.log(data);
     if (selectedItem && DetailedElement) {
         return (
             <DetailedElement item={selectedItem} setSelectedItem={setSelectedItem} />

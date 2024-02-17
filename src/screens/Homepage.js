@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Modal, View, TextInput, Button, Text, ScrollView } from 'react-native';
-import { urlHead } from '../helper/extrapropertise';
+import { PNG_CONTENT_TYPE, urlHead } from '../helper/extrapropertise';
 import axios, * as others from 'axios';
-
-//const axios = require('axios');
-
+import { endpoints } from '../Endpoints/endpoints';
+import { blobToBase64 } from '../helper/helper';
 
 const ProjectDetailsModal = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -82,8 +81,6 @@ const ProjectDetailsModal = ({ navigation }) => {
     console.log("lets print form data", formData);
     console.log(formData);
 
-
-
   };
   const handleSubmit = () => {
     console.log('Form Data:', formData);
@@ -107,37 +104,34 @@ const ProjectDetailsModal = ({ navigation }) => {
     // Close the modal
     setModalVisible(false);
     console.log("lets print form data", formData);
-    
+
   };
-  const [file,setFile]=useState(null);
-  const [image,setImage]=useState()
-  const  handleUpload = (e) =>{
-      console.log(file);
-      const formdata = new FormData()
-      formData.append('file',file)
-      axios.post('http://localhost:3000/upload',formdata)
-      .then(res=>setImage(res.data[0].image))
-      .catch(err=>console.log(err))
+  const [file, setFile] = useState(null);
+  const [image, setImage] = useState()
 
+  const handleUpload = async (e) => {
+    const formData = {};
+    let data = await blobToBase64(file)
+    formData.Base64Data = data
+    formData.contentType = PNG_CONTENT_TYPE
+    formData.id = 'chetan'
+    return await endpoints.File.create(formData);
   }
-  useEffect(()=>{
-    axios.get('http://localhost:3000/getImage')
-    .then(res=>setImage(res.data[0].image))
-    .catch(err=>console.log(err))
-  },[])
-  
- 
 
-
-
+  const getImage = async () => {
+    var data = await endpoints.File.getAll()
+    console.log(data);
+    setImage(data)
+  }
+  console.log(image);
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center',gap:'10px' }}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
       <Button title="Add new Project Details" onPress={() => setModalVisible(true)} />
       <Button title="Users" onPress={() =>
         navigation.navigate('Users')
       } />
-        <Button title="Accounts" onPress={() =>
-        navigation.navigate('Accounts')
+      <Button title="Projects" onPress={() =>
+        navigation.navigate('Projects')
       } />
       <Modal
         animationType="slide"
@@ -302,25 +296,25 @@ const ProjectDetailsModal = ({ navigation }) => {
               onChangeText={(text) => handleInputChange('email', text)}
               style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
             />
-             <TextInput
+            <TextInput
               placeholder="RCC : Column footing "
               value={formData.email}
               onChangeText={(text) => handleInputChange('email', text)}
               style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
             />
-              <TextInput
+            <TextInput
               placeholder="RCC : Pleanth Beam "
               value={formData.email}
               onChangeText={(text) => handleInputChange('email', text)}
               style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
             />
-              <TextInput
+            <TextInput
               placeholder="RCC : Staircase Drawing  "
               value={formData.email}
               onChangeText={(text) => handleInputChange('email', text)}
               style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
             />
-              <TextInput
+            <TextInput
               placeholder="RCC : first Slab  "
               value={formData.email}
               onChangeText={(text) => handleInputChange('email', text)}
@@ -344,24 +338,24 @@ const ProjectDetailsModal = ({ navigation }) => {
               onChangeText={(text) => handleInputChange('email', text)}
               style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
             />
-
-            
-
-
-
-            
-
             <Button title="Submit" onPress={() => Modal1Bkcall()} />
             <Button title="Close" onPress={() => setModalVisible(false)} />
           </ScrollView>
         </View>
       </Modal>
-      <div> 
-          <input type='file' onChange={e=>setFile(e.target.files[0])}></input>
-          <button onClick={handleUpload}>upload</button>
-      </div>
+      <View>
+        <input type='file' onChange={e => setFile(e.target.files[0])}></input>
+        <button onClick={handleUpload}>upload</button>
+        <button onClick={getImage}>getImage</button>
+      </View>
       <br></br>
-      <img src={`http://localhost:3000/Images/`+image} alt="link chalana"></img>
+      {
+        image?.map(element=>{
+          return(
+            <img src={element?.Base64Data} alt="link chalana"></img>     
+          )
+        })
+       }
     </View>
   );
 };

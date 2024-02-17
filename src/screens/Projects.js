@@ -25,7 +25,7 @@ const Card = ({ item }) => {
     )
 }
 
-export const Accounts = ({navigation}) => {
+export const Projects = ({ navigation }) => {
     const queryKey = [UPDATE_ON_ACCOUNT]
     const queryFunction = async () => {
         var accounts = await endpoints.Account.getAll()
@@ -34,9 +34,9 @@ export const Accounts = ({navigation}) => {
     }
     const getValueToSearch = (current) => {
         return (
-            current.email +
-            current.clientName +
-            current.aadhar
+            (current?.email +
+                current?.clientName +
+                current?.aadhar) || ""
         )
     }
 
@@ -47,8 +47,8 @@ export const Accounts = ({navigation}) => {
                 queryKey={queryKey}
                 getSearchableValue={getValueToSearch}
                 Card={Card}
-                dataviewTitle = {"Accounts"}
-                navigation = {navigation}
+                dataviewTitle={"Projects"}
+                navigation={navigation}
             />
         </SafeAreaView>
     )

@@ -5,9 +5,11 @@ const GET_METHOD = "GET";
 
 const USER_ENDPOINT = "users";
 const ACCOUNT_ENDPOINT = "account"
+const FILE_ENDPOINT = "file"
 
 export const UPDATE_ON_USER = "UpdateOnUser";
 export const UPDATE_ON_ACCOUNT = "UpdateOnAccount"
+export const UPDATE_ON_FILE = "UpdateOnFile"
 
 class CRUDMethods {
     constructor(endpoint) {
@@ -15,7 +17,7 @@ class CRUDMethods {
     }
 
     async create(body = null) {
-        return fetchHelper(this.endpoint, POST_METHOD, data = body);
+        return fetchHelper(this.endpoint, POST_METHOD, body);
     }
 
     async getAll(body = null) {
@@ -26,5 +28,6 @@ class CRUDMethods {
 
 export var endpoints = {
     Users: new CRUDMethods(USER_ENDPOINT),
-    Account: new CRUDMethods(ACCOUNT_ENDPOINT)
+    Account: new CRUDMethods(ACCOUNT_ENDPOINT),
+    File: new CRUDMethods(FILE_ENDPOINT)
 }
