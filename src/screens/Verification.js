@@ -45,7 +45,6 @@ const Verification = ({ navigation, route }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
                     if (data.message === 'User Registered Successfully') {
                         alert(data.message);
                         navigation.navigate('login')

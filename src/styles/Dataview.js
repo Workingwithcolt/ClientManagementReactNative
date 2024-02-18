@@ -55,19 +55,38 @@ export const dataview = {
         top: "20px",
         zIndex: 100,
         backgroundColor: '#fff',
-        opacity:1,
+        opacity: 1,
     },
     heightAndOverflow: {
-        height:"80%",
+        height: "80%",
         overflow: 'auto'
     },
-    DataviewHeader:{
-        display:"flex",
-        flexDirection:"row",
+    DataviewHeader: {
+        display: "flex",
+        flexDirection: "row",
         justifyContent: "space-evenly",
-        padding:2
+        padding: 2
     },
-    back:{
-        padding:0
+    back: {
+        padding: 0
+    },
+    DetailView: {
+        display: "flex",
+        backgroundColor: '#cbd5e1',
+        borderRadius: 8,
+        flex: 1,
+        flexDirection: "column",
+        height: '100%',
+        width: '100%',
+        maxHeight: '100%',
+        maxWidth: '100%',
+        overflow: 'auto',
+        padding: '5px',
+        gap: 0
+    },
+    img: {
+        width: "200px",
+        height: "200px"
     }
+
 };

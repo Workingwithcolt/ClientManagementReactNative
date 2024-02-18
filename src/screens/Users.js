@@ -29,9 +29,7 @@ export const Users = ({ navigation }) => {
     const queryKey = [UPDATE_ON_USER]
     const queryFunction = async () => {
         var data = await endpoints.Users.getAll()
-        console.log(data);
         var accounts = await endpoints.Account.getAll()
-        console.log(accounts);
         return data
     }
     const getValueToSearch = (current) => {

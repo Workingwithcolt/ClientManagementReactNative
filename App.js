@@ -9,22 +9,38 @@ import Verification from './src/screens/Verification';
 import GenericBodyCard from './src/GenericComponent/GenericBodyCard';
 import { Users } from './src/screens/Users';
 import { Projects } from './src/screens/Projects';
+import { ShowFile } from './src/GenericComponent/ShowFile';
+import { UploadFile } from './src/GenericComponent/UploadFile';
 
 
 const Stack = createNativeStackNavigator();
 
-const UserComponent = ({navigation}) => {
+const UserComponent = ({ navigation }) => {
   return (
     <GenericBodyCard>
-      <Users navigation={navigation}/>
+      <Users navigation={navigation} />
     </GenericBodyCard>
   )
 }
-const AccountComponent = ({navigation}) => {
+const AccountComponent = ({ navigation }) => {
   return (
     <GenericBodyCard>
-      <Projects navigation={navigation}/>
+      <Projects navigation={navigation} />
     </GenericBodyCard>
+  )
+}
+
+const FileComponent = ({ navigation,route }) => {
+  return (<GenericBodyCard>
+    <ShowFile navigation={navigation} route={route} />
+  </GenericBodyCard>)
+}
+
+const UploadComponent = ({navigation,route})=>{
+  return(
+    <GenericBodyCard>
+    <UploadFile navigation={navigation} route={route} />
+  </GenericBodyCard>
   )
 }
 
@@ -36,7 +52,7 @@ export default function App() {
           options={
             {
               headerShown: true,
-              headerBackButtonMenuEnabled:true
+              headerBackButtonMenuEnabled: true
             }
           }
         />
@@ -44,8 +60,8 @@ export default function App() {
           options={
             {
               headerShown: true,
-              headerBackButtonMenuEnabled:true
-              
+              headerBackButtonMenuEnabled: true
+
             }
           }
         />
@@ -53,7 +69,7 @@ export default function App() {
           options={
             {
               headerShown: true,
-              headerBackButtonMenuEnabled:true
+              headerBackButtonMenuEnabled: true
 
             }
           }
@@ -66,7 +82,7 @@ export default function App() {
           options={
             {
               headerShown: true,
-              headerBackButtonMenuEnabled:true
+              headerBackButtonMenuEnabled: true
 
             }
           }
@@ -76,7 +92,7 @@ export default function App() {
           options={
             {
               headerShown: true,
-              headerBackButtonMenuEnabled:true
+              headerBackButtonMenuEnabled: true
 
             }
           }
@@ -86,7 +102,7 @@ export default function App() {
           options={
             {
               headerShown: true,
-              headerBackButtonMenuEnabled:true
+              headerBackButtonMenuEnabled: true
 
             }
           }
@@ -96,12 +112,33 @@ export default function App() {
           options={
             {
               headerShown: true,
-              headerBackButtonMenuEnabled:true
+              headerBackButtonMenuEnabled: true
 
             }
           }
         />
+        <Stack.Screen name="Files" component={
+          FileComponent}
+          options={
+            {
+              headerShown: true,
+              headerBackButtonMenuEnabled: true
 
+            }
+          }
+          initialParams={{ id:undefined}}
+        />
+ <Stack.Screen name="Upload" component={
+          UploadComponent}
+          options={
+            {
+              headerShown: true,
+              headerBackButtonMenuEnabled: true
+
+            }
+          }
+          initialParams={{ id:undefined}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
 

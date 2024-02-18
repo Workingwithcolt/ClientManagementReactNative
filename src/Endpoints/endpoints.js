@@ -20,8 +20,8 @@ class CRUDMethods {
         return fetchHelper(this.endpoint, POST_METHOD, body);
     }
 
-    async getAll(body = null) {
-        return fetchHelper(this.endpoint, GET_METHOD, body);
+    async getAll(body = null, options = null) {
+        return fetchHelper(this.endpoint, GET_METHOD, body, options);
     }
 
 }

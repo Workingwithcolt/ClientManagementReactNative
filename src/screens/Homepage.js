@@ -47,7 +47,7 @@ const ProjectDetailsModal = ({ navigation }) => {
       pin: '',
       email: ''
     });
-
+// let data = endpoints.Account.create(formData)
     fetch(`http://${urlHead}/clientData`, {
       method: 'POST',
       headers: {
@@ -106,24 +106,7 @@ const ProjectDetailsModal = ({ navigation }) => {
     console.log("lets print form data", formData);
 
   };
-  const [file, setFile] = useState(null);
-  const [image, setImage] = useState()
 
-  const handleUpload = async (e) => {
-    const formData = {};
-    let data = await blobToBase64(file)
-    formData.Base64Data = data
-    formData.contentType = PNG_CONTENT_TYPE
-    formData.id = 'chetan'
-    return await endpoints.File.create(formData);
-  }
-
-  const getImage = async () => {
-    var data = await endpoints.File.getAll()
-    console.log(data);
-    setImage(data)
-  }
-  console.log(image);
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
       <Button title="Add new Project Details" onPress={() => setModalVisible(true)} />
@@ -343,19 +326,8 @@ const ProjectDetailsModal = ({ navigation }) => {
           </ScrollView>
         </View>
       </Modal>
-      <View>
-        <input type='file' onChange={e => setFile(e.target.files[0])}></input>
-        <button onClick={handleUpload}>upload</button>
-        <button onClick={getImage}>getImage</button>
-      </View>
+
       <br></br>
-      {
-        image?.map(element=>{
-          return(
-            <img src={element?.Base64Data} alt="link chalana"></img>     
-          )
-        })
-       }
     </View>
   );
 };

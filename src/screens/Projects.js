@@ -4,6 +4,7 @@ import { NODATA, users } from "../helper/extrapropertise"
 import DataView from "../GenericComponent/Dataview"
 import { SafeAreaView, View, Text } from "react-native-web"
 import { dataview } from "../styles/Dataview"
+import { ProjectDetailView } from "./ProjectDetailView"
 
 const Card = ({ item }) => {
     return (
@@ -33,6 +34,7 @@ export const Projects = ({ navigation }) => {
         return accounts
     }
     const getValueToSearch = (current) => {
+        console.log(current);
         return (
             (current?.email +
                 current?.clientName +
@@ -49,6 +51,7 @@ export const Projects = ({ navigation }) => {
                 Card={Card}
                 dataviewTitle={"Projects"}
                 navigation={navigation}
+                DetailedElement = {ProjectDetailView}
             />
         </SafeAreaView>
     )

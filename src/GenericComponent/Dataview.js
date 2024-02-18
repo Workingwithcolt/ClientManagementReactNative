@@ -20,10 +20,9 @@ function DataView({ queryFunction, queryKey, getSearchableValue, Card, DetailedE
             return valueToSearchIn.includes(valueToSearch);
         })
     }
-console.log(data);
     if (selectedItem && DetailedElement) {
         return (
-            <DetailedElement item={selectedItem} setSelectedItem={setSelectedItem} />
+            <DetailedElement item={selectedItem} setSelectedItem={setSelectedItem} navigation={navigation} />
         )
     }
 
@@ -52,7 +51,7 @@ console.log(data);
                     <View style={dataview.text}>
                         {dataviewTitle}
                     </View>
-                    <Button style = {dataview.back} title="Back" onPress={() =>
+                    <Button style={dataview.back} title="Back" onPress={() =>
                         navigation.navigate('homepage')
                     } />
                 </View>

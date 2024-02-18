@@ -1,11 +1,17 @@
 import { urlHead } from "./extrapropertise";
 
-export const fetchHelper = async (endpoint, method, data) => {
-    if(data){
+export const fetchHelper = async (endpoint, method, data, options) => {
+    var url = `http://localhost:3000/${endpoint}`
+    if (options) {
+        const queryParams = new URLSearchParams(options);
+        url = url + `?${queryParams.toString()}`;
+    }
+    console.log(url);
+    if (data) {
         data = JSON.stringify(data)
     }
     try {
-        var response = await fetch(`http://localhost:3000/${endpoint}`, {
+        var response = await fetch(url, {
             method: method,
             headers: {
                 'Content-Type': 'application/json'
