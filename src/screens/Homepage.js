@@ -1,111 +1,68 @@
-import React, { useEffect, useState } from 'react';
-import { Modal, View, TextInput, Button, Text, ScrollView } from 'react-native';
-import { PNG_CONTENT_TYPE, urlHead } from '../helper/extrapropertise';
-import axios, * as others from 'axios';
+import React, { useReducer, useState } from 'react';
+import { Modal, View, Button, Text, ScrollView } from 'react-native';
+import { Propertylist, SchemaTypes, Section1, Section4, Section5, urlHead } from '../helper/extrapropertise';
+import { blobToBase64, deepCopyObject, getIndex } from '../helper/helper';
 import { endpoints } from '../Endpoints/endpoints';
-import { blobToBase64 } from '../helper/helper';
 
+const init = {};
+
+const ADD_PROPS_TYPE = "Add_Property";
+const REMOVE_PROPS_TYPE = "Remove_Property";
+const ADD_ARRAY = "push"
+const UPDATE_PROP_VALUES = "update"
+
+const reducer = (state, action) => {
+  var currentState = deepCopyObject(state);
+  if ((action.type === ADD_ARRAY || action.type === UPDATE_PROP_VALUES) && state[action.payload.name]) {
+    currentState[action.payload.name] = [...state[action.payload.name]]
+  }
+  switch (action.type) {
+    case ADD_PROPS_TYPE:
+      currentState[action.payload.name] = action.payload.value;
+      break;
+    case ADD_ARRAY:
+      if (!currentState[action.payload.name]) {
+
+        currentState[action.payload.name] = []
+      }
+      currentState[action.payload.name].push({})
+      break;
+    case UPDATE_PROP_VALUES:
+      currentState[action.payload.name][action.payload.index] = action.payload.value;
+      break
+    case REMOVE_PROPS_TYPE:
+      delete currentState[action.payload];
+      break;
+    default:
+  }
+
+  return currentState;
+};
 const ProjectDetailsModal = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [formData, setFormData] = useState({
-    title: '',
-    clientName: '',
-    projectType: '',
-    projectHead: '',
-    rccDesignerName: '',
-    model3D: '',
-    buildingApproval: '',
-    plinth: '',
-    buildingCompletion: '',
-    pan: '',
-    aadhar: '',
-    pin: '',
-    email: ''
-  });
+  const [state, dispatch] = useReducer(reducer, init);
 
-  const handleInputChange = (field, value) => {
-    setFormData({ ...formData, [field]: value });
-  };
-  const Modal1Bkcall = () => {
-    console.log("inside sendtobackend");
-    console.log(formData);
+  const ConvertToBase64 = async (index, name, e) => {
+    let data = await blobToBase64(e.target.files[0])
+    dispatch({ type: UPDATE_PROP_VALUES, payload: { index: index, name: name, value: data } })
+  }
 
-    //      const [errormsg, setErrormsg] = useState(null);
+  const Modal1Bkcall = async () => {
 
-    setFormData({
-      title: '',
-      clientName: '',
-      projectType: '',
-      projectHead: '',
-      rccDesignerName: '',
-      model3D: '',
-      buildingApproval: '',
-      plinth: '',
-      buildingCompletion: '',
-      pan: '',
-      aadhar: '',
-      pin: '',
-      email: ''
-    });
-// let data = endpoints.Account.create(formData)
-    fetch(`http://${urlHead}/clientData`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData),
-      mode: 'cors',
-    })
-      .then(res => res.json()).then(
-
-        data => {
-          // console.log("inside data form fe",data);
-          //   console.log("normal data",data);
-          //   var dataAsString = JSON.stringify(data);
-          //   console.log("data as a string",dataAsString)
-          //   var local = '{"message":"Data sent Registered Successfully"}';
-          if (data.error === "Invalid Credentials") {
-            setErrormsg(data.error);
-          }
-          else {
-            //if(local==dataAsString){
-            alert('Information saved to database');
-
-            //}
-          }
-        }
-
-      )
-
+    let data = endpoints.Account.create(state);
     setModalVisible(false);
-    console.log("lets print form data", formData);
-    console.log(formData);
-
+    console.log("lets print form data", data);
+    console.log(data);
   };
-  const handleSubmit = () => {
-    console.log('Form Data:', formData);
-    // You can perform further actions here, like sending the form data to a server
-    // Reset form fields
-    setFormData({
-      title: '',
-      clientName: '',
-      projectType: '',
-      projectHead: '',
-      rccDesignerName: '',
-      model3D: '',
-      buildingApproval: '',
-      plinth: '',
-      buildingCompletion: '',
-      pan: '',
-      aadhar: '',
-      pin: '',
-      email: ''
-    });
-    // Close the modal
-    setModalVisible(false);
-    console.log("lets print form data", formData);
 
-  };
+  const Onchange = async (e, element) => {
+    if (element.type === SchemaTypes.file) {
+      let data = await blobToBase64(e.target.files[0])
+      dispatch({ type: ADD_PROPS_TYPE, payload: { name: element.name, value: data } })
+    } else {
+      dispatch({ type: ADD_PROPS_TYPE, payload: { name: element.name, value: e.target.value } })
+    }
+  }
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
@@ -125,208 +82,170 @@ const ProjectDetailsModal = ({ navigation }) => {
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
           <ScrollView style={{ backgroundColor: 'white', padding: 20, borderRadius: 10 }}>
             <Text>Section 1: Client Basic Details</Text>
-            <TextInput
-              placeholder="Title"
-              value={formData.title}
-              onChangeText={(text) => handleInputChange('title', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="Client Name"
-              value={formData.clientName}
-              onChangeText={(text) => handleInputChange('clientName', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="Project Type"
-              value={formData.projectType}
-              onChangeText={(text) => handleInputChange('projectType', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="Project Head"
-              value={formData.projectHead}
-              onChangeText={(text) => handleInputChange('projectHead', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="RCC Designer Name"
-              value={formData.rccDesignerName}
-              onChangeText={(text) => handleInputChange('rccDesignerName', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="3D Model"
-              value={formData.model3D}
-              onChangeText={(text) => handleInputChange('model3D', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="Building Approval"
-              value={formData.buildingApproval}
-              onChangeText={(text) => handleInputChange('buildingApproval', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="Plinth"
-              value={formData.plinth}
-              onChangeText={(text) => handleInputChange('plinth', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="Building Completion"
-              value={formData.buildingCompletion}
-              onChangeText={(text) => handleInputChange('buildingCompletion', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="PAN"
-              value={formData.pan}
-              onChangeText={(text) => handleInputChange('pan', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="Aadhar"
-              value={formData.aadhar}
-              onChangeText={(text) => handleInputChange('aadhar', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="PIN"
-              value={formData.pin}
-              onChangeText={(text) => handleInputChange('pin', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="Email"
-              value={formData.email}
-              onChangeText={(text) => handleInputChange('email', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <Text>Section 2: Presentation Drawing </Text>
-            <TextInput
-              placeholder="upload Presentation Drawing"
-              value={formData.email}
-              onChangeText={(text) => handleInputChange('email', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="file upload Presentation Drawing"
-              value={formData.email}
-              onChangeText={(text) => handleInputChange('email', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="Add Button to add more presentation drawing"
-              value={formData.email}
-              onChangeText={(text) => handleInputChange('email', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <Text>Section 3: 3D Model and Design </Text>
-            <TextInput
-              placeholder="Upload option to add 3d model 1"
-              value={formData.email}
-              onChangeText={(text) => handleInputChange('email', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="Upload option to add 3d model 2"
-              value={formData.email}
-              onChangeText={(text) => handleInputChange('email', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="Upload option to add 3d model 3"
-              value={formData.email}
-              onChangeText={(text) => handleInputChange('email', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="Add Button to add more presentation drawing"
-              value={formData.email}
-              onChangeText={(text) => handleInputChange('email', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <Text>Section 4: Submission Drawing  </Text>
-            <TextInput
-              placeholder="Sanction Date add google Date "
-              value={formData.email}
-              onChangeText={(text) => handleInputChange('email', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="Plint "
-              value={formData.email}
-              onChangeText={(text) => handleInputChange('email', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="Revised Sanction Date "
-              value={formData.email}
-              onChangeText={(text) => handleInputChange('email', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="Completion Date "
-              value={formData.email}
-              onChangeText={(text) => handleInputChange('email', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <Text>Section 5: Working  Drawing  </Text>
-            <TextInput
-              placeholder="RCC drawing upload and give 2 checkbox "
-              value={formData.email}
-              onChangeText={(text) => handleInputChange('email', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="RCC : Column footing "
-              value={formData.email}
-              onChangeText={(text) => handleInputChange('email', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="RCC : Pleanth Beam "
-              value={formData.email}
-              onChangeText={(text) => handleInputChange('email', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="RCC : Staircase Drawing  "
-              value={formData.email}
-              onChangeText={(text) => handleInputChange('email', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="RCC : first Slab  "
-              value={formData.email}
-              onChangeText={(text) => handleInputChange('email', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="RCC : Second  Slab  "
-              value={formData.email}
-              onChangeText={(text) => handleInputChange('email', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="RCC : Third  Slab  "
-              value={formData.email}
-              onChangeText={(text) => handleInputChange('email', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
-            <TextInput
-              placeholder="ADD option to add more slab "
-              value={formData.email}
-              onChangeText={(text) => handleInputChange('email', text)}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-            />
+            {
+              Section1.map(element => {
+                return (
+                  <>
+                    <label for={element.name} style={{ marginTop: 0 }}>{element.placeholder}</label>
+                    <input
+                      id={element.name}
+                      placeholder={element.placeholder}
+                      value={state[element.name] ? state[element.name] : ""}
+                      onChange={(e) =>
+                        Onchange(e, element)
+                      }
+                      type={element.type}
+                      style={element.style}
+                    />
+                  </>
+                )
+              })
+            }
+            <Text>Section 2:Add Presentation Drawing</Text>
+            <View>
+              {
+                state?.[Propertylist.PresentationDraw.name] && Object.entries(state[Propertylist.PresentationDraw.name])?.map((element, index) => {
+                  return (
+                    <View >
+                      <label for={Propertylist.PresentationDraw.name} style={{ marginTop: 0 }}>{Propertylist.PresentationDraw.placeholder}</label>
+                      <input
+                        id={Propertylist.PresentationDraw.name}
+                        placeholder={Propertylist.PresentationDraw.placeholder}
+                        // value={element}
+                        onChange={async (e) =>
+                          await ConvertToBase64(index, Propertylist.PresentationDraw.name, e)
+                        }
+                        type={Propertylist.PresentationDraw.type}
+                        style={Propertylist.PresentationDraw.style}
+                      />
+                    </View>
+                  )
+                })
+              }
+              <Button title="Add" onPress={() => {
+                dispatch({ type: ADD_ARRAY, payload: { name: Propertylist.PresentationDraw.name } })
+              }} />
+            </View>
+            <Text>Section 3: Add 3d Models</Text>
+            <View>
+              {
+                state?.[Propertylist.FileModel3D.name] && Object.entries(state[Propertylist.FileModel3D.name])?.map((element, index) => {
+                  return (
+                    <View >
+                      <label for={Propertylist.FileModel3D.name} style={{ marginTop: 0 }}>{Propertylist.FileModel3D.placeholder}</label>
+                      <input
+                        id={Propertylist.FileModel3D.name}
+                        placeholder={Propertylist.FileModel3D.placeholder}
+                        // value={element}
+                        onChange={async (e) =>
+                          await ConvertToBase64(index, Propertylist.FileModel3D.name, e)
+                        }
+                        type={Propertylist.FileModel3D.type}
+                        style={Propertylist.FileModel3D.style}
+                      />
+                    </View>
+                  )
+                })
+              }
+              <Button title="Add" onPress={() => {
+                dispatch({ type: ADD_ARRAY, payload: { name: Propertylist.FileModel3D.name } })
+              }} />
+            </View>
+            <Text>Section 4</Text>
+            {
+              Section4.map(element => {
+                return (
+                  <>
+                    <label for={element.name} style={{ marginTop: 0 }}>{element.placeholder}</label>
+                    <input
+                      id={element.name}
+                      placeholder={element.placeholder}
+                      // value={state[element.name] ? state[element.name] : ""}
+                      onChange={(e) =>
+                        Onchange(e, element)
+                      }
+                      type={element.type}
+                      style={element.style}
+                    />
+                  </>
+                )
+              })
+            }
+            <Text>Section 5: Add RCC Drawing</Text>
+            <View>
+              {
+                state?.[Propertylist.RCCDrawing1.name] && Object.entries(state[Propertylist.RCCDrawing1.name])?.map((element, index) => {
+                  return (
+                    <View >
+                      <label for={Propertylist.RCCDrawing1.name} style={{ marginTop: 0 }}>{Propertylist.RCCDrawing1.placeholder}</label>
+                      <input
+                        id={Propertylist.RCCDrawing1.name}
+                        placeholder={Propertylist.RCCDrawing1.placeholder}
+                        // value={element}
+                        onChange={async (e) =>
+                          await ConvertToBase64(index, Propertylist.RCCDrawing1.name, e)
+                        }
+                        type={Propertylist.RCCDrawing1.type}
+                        style={Propertylist.RCCDrawing1.style}
+                      />
+                    </View>
+                  )
+                })
+              }
+              <Button title="Add" onPress={() => {
+                dispatch({ type: ADD_ARRAY, payload: { name: Propertylist.RCCDrawing1.name } })
+              }} />
+            </View>
+            <Text>Section 5</Text>
+            {
+              Section5.map(element => {
+                return (
+                  <>
+                    <label for={element.name} style={{ marginTop: 0 }}>{element.placeholder}</label>
+                    <input
+                      id={element.name}
+                      placeholder={element.placeholder}
+                      // value={state[element.name] ? state[element.name] : ""}
+                      onChange={(e) =>
+                        Onchange(e, element)
+                      }
+                      type={element.type}
+                      style={element.style}
+                    />
+                  </>
+                )
+              })
+            }
+            <Text>Section 5:Add Slab files</Text>
+            <View>
+              {
+                state?.[Propertylist.firstSlab.name] && Object.entries(state[Propertylist.firstSlab.name])?.map((element, index) => {
+                  return (
+                    <View >
+                      <label for={Propertylist.firstSlab.name} style={{ marginTop: 0 }}>{Propertylist.firstSlab.placeholder}</label>
+                      <input
+                        id={Propertylist.firstSlab.name}
+                        placeholder={Propertylist.firstSlab.placeholder}
+                        // value={element}
+                        onChange={async (e) =>
+                          await ConvertToBase64(index, Propertylist.firstSlab.name, e)
+                        }
+                        type={Propertylist.firstSlab.type}
+                        style={Propertylist.firstSlab.style}
+                      />
+                    </View>
+                  )
+                })
+              }
+              <Button title="Add" onPress={() => {
+                dispatch({ type: ADD_ARRAY, payload: { name: Propertylist.firstSlab.name } })
+              }} />
+            </View>
             <Button title="Submit" onPress={() => Modal1Bkcall()} />
             <Button title="Close" onPress={() => setModalVisible(false)} />
           </ScrollView>
         </View>
       </Modal>
-
       <br></br>
     </View>
   );
