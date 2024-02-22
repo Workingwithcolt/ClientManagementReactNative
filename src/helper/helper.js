@@ -19,8 +19,8 @@ export function deepCopyObject(fromObject) {
     return JSON.parse(JSON.stringify(fromObject));
 }
 
-export const getIndex = (obj)=>{
-    if(!obj || Object.keys(obj) === 0){
+export const getIndex = (obj) => {
+    if (!obj || Object.keys(obj) === 0) {
         return 1;
     }
     return Object.keys(obj).length + 1;

@@ -32,6 +32,7 @@ export const users = "Users"
 export const NODATA = "NoData"
 export const JPG_CONTENT_TYPE = 'image/jpeg'
 export const PNG_CONTENT_TYPE = 'image/png'
+export const PDF_CONTENT_TYPE = "application/pdf"
 
 export const Propertylist = {
     title: {

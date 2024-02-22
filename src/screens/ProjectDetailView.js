@@ -4,6 +4,7 @@ import { View, Text } from "react-native";
 import { TableList } from "../GenericComponent/CardList";
 import { CommonClass } from "../styles/Commonclass";
 import { BodyList } from "../GenericComponent/BodyList";
+import { NODATA } from "../helper/extrapropertise";
 
 export const ProjectDetailView = ({ item, navigation }) => {
     return (
@@ -15,9 +16,9 @@ export const ProjectDetailView = ({ item, navigation }) => {
                             <table style={CommonClass.table}>
                                 {
                                     Object.entries(item).map(([key, value]) => {
-                                        if (!(key == "_id" || key == "__v")) {
+                                        if (!(key == "_id" || key == "__v" || value instanceof Array || value instanceof Object)) {
                                             return (
-                                                <TableList name={key} key={key} value={value} />
+                                                <TableList name={key} key={key} value={value || NODATA} />
                                             )
                                         }
                                     })

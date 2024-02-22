@@ -18,7 +18,13 @@ const reducer = (state, action) => {
   }
   switch (action.type) {
     case ADD_PROPS_TYPE:
-      currentState[action.payload.name] = action.payload.value;
+      let data = undefined
+      if (action.payload?.ContentType) {
+        data = { value: action.payload.value, ContentType: action.payload.ContentType, fileName: action.payload.fileName }
+      } else {
+        data = action.payload.value
+      }
+      currentState[action.payload.name] = data;
       break;
     case ADD_ARRAY:
       if (!currentState[action.payload.name]) {
@@ -28,7 +34,8 @@ const reducer = (state, action) => {
       currentState[action.payload.name].push({})
       break;
     case UPDATE_PROP_VALUES:
-      currentState[action.payload.name][action.payload.index] = action.payload.value;
+      currentState[action.payload.name][action.payload.index] =
+        { value: action.payload.value, ContentType: action.payload.ContentType,fileName: action.payload.fileName };
       break
     case REMOVE_PROPS_TYPE:
       delete currentState[action.payload];
@@ -44,7 +51,11 @@ const ProjectDetailsModal = ({ navigation }) => {
 
   const ConvertToBase64 = async (index, name, e) => {
     let data = await blobToBase64(e.target.files[0])
-    dispatch({ type: UPDATE_PROP_VALUES, payload: { index: index, name: name, value: data } })
+    console.log(e.target.files[0]?.type);
+    dispatch({
+      type: UPDATE_PROP_VALUES, payload:
+        { ContentType: e.target.files[0]?.type, index: index, name: name, value: data, fileName: e.target.files[0]?.name }
+    })
   }
 
   const Modal1Bkcall = async () => {
@@ -58,7 +69,8 @@ const ProjectDetailsModal = ({ navigation }) => {
   const Onchange = async (e, element) => {
     if (element.type === SchemaTypes.file) {
       let data = await blobToBase64(e.target.files[0])
-      dispatch({ type: ADD_PROPS_TYPE, payload: { name: element.name, value: data } })
+      console.log(e.target.files[0]);
+      dispatch({ type: ADD_PROPS_TYPE, payload: { fileName: e.target.files[0]?.name, name: element.name, value: data, ContentType: e.target.files[0]?.type } })
     } else {
       dispatch({ type: ADD_PROPS_TYPE, payload: { name: element.name, value: e.target.value } })
     }
