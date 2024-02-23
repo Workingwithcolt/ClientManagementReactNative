@@ -9,9 +9,59 @@ import Verification from './src/screens/Verification';
 import GenericBodyCard from './src/GenericComponent/GenericBodyCard';
 import { Users } from './src/screens/Users';
 import { Projects } from './src/screens/Projects';
-import { ShowFile } from './src/GenericComponent/ShowFile';
-import { UploadFile } from './src/GenericComponent/UploadFile';
+import { PaperProvider, MD3LightTheme as DefaultTheme, } from 'react-native-paper';
+import { ShowTableFiles } from './src/GenericComponent/ShowTableFiles';
 
+
+const lightTheme = {
+  "colors": {
+    "primary": "rgb(120, 69, 172)",
+    "onPrimary": "rgb(255, 255, 255)",
+    "primaryContainer": "rgb(240, 219, 255)",
+    "onPrimaryContainer": "rgb(44, 0, 81)",
+    "secondary": "rgb(102, 90, 111)",
+    "onSecondary": "rgb(255, 255, 255)",
+    "secondaryContainer": "rgb(237, 221, 246)",
+    "onSecondaryContainer": "rgb(33, 24, 42)",
+    "tertiary": "rgb(128, 81, 88)",
+    "onTertiary": "rgb(255, 255, 255)",
+    "tertiaryContainer": "rgb(255, 217, 221)",
+    "onTertiaryContainer": "rgb(50, 16, 23)",
+    "error": "rgb(186, 26, 26)",
+    "onError": "rgb(255, 255, 255)",
+    "errorContainer": "rgb(255, 218, 214)",
+    "onErrorContainer": "rgb(65, 0, 2)",
+    "background": "rgb(255, 251, 255)",
+    "onBackground": "rgb(29, 27, 30)",
+    "surface": "rgb(255, 251, 255)",
+    "onSurface": "rgb(29, 27, 30)",
+    "surfaceVariant": "rgb(233, 223, 235)",
+    "onSurfaceVariant": "rgb(74, 69, 78)",
+    "outline": "rgb(124, 117, 126)",
+    "outlineVariant": "rgb(204, 196, 206)",
+    "shadow": "rgb(0, 0, 0)",
+    "scrim": "rgb(0, 0, 0)",
+    "inverseSurface": "rgb(50, 47, 51)",
+    "inverseOnSurface": "rgb(245, 239, 244)",
+    "inversePrimary": "rgb(220, 184, 255)",
+    "elevation": {
+      "level0": "transparent",
+      "level1": "rgb(248, 242, 251)",
+      "level2": "rgb(244, 236, 248)",
+      "level3": "rgb(240, 231, 246)",
+      "level4": "rgb(239, 229, 245)",
+      "level5": "rgb(236, 226, 243)"
+    },
+    "surfaceDisabled": "rgba(29, 27, 30, 0.12)",
+    "onSurfaceDisabled": "rgba(29, 27, 30, 0.38)",
+    "backdrop": "rgba(51, 47, 55, 0.4)"
+  }
+}
+
+const theme = {
+  ...DefaultTheme,
+  colors: lightTheme.colors, // Copy it from the color codes scheme and then use it here
+};
 
 const Stack = createNativeStackNavigator();
 
@@ -30,116 +80,102 @@ const AccountComponent = ({ navigation }) => {
   )
 }
 
-const FileComponent = ({ navigation,route }) => {
-  return (<GenericBodyCard>
-    <ShowFile navigation={navigation} route={route} />
-  </GenericBodyCard>)
-}
-
-const UploadComponent = ({navigation,route})=>{
-  return(
+const ShowTableFilesComponent = ({ navigation, route }) => {
+  return (
     <GenericBodyCard>
-    <UploadFile navigation={navigation} route={route} />
-  </GenericBodyCard>
+      < ShowTableFiles navigation={navigation} route={route} />
+    </GenericBodyCard>
   )
 }
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="welcome" component={Welcome}
-          options={
-            {
-              headerShown: true,
-              headerBackButtonMenuEnabled: true
+      <PaperProvider theme={theme}>
+        <Stack.Navigator>
+          <Stack.Screen name="welcome" component={Welcome}
+            options={
+              {
+                headerShown: true,
+                headerBackButtonMenuEnabled: true
+              }
             }
-          }
-        />
-        <Stack.Screen name="login" component={Login}
-          options={
-            {
-              headerShown: true,
-              headerBackButtonMenuEnabled: true
+          />
+          <Stack.Screen name="login" component={Login}
+            options={
+              {
+                headerShown: true,
+                headerBackButtonMenuEnabled: true
 
+              }
             }
-          }
-        />
-        <Stack.Screen name="signup" component={Signup}
-          options={
-            {
-              headerShown: true,
-              headerBackButtonMenuEnabled: true
+          />
+          <Stack.Screen name="signup" component={Signup}
+            options={
+              {
+                headerShown: true,
+                headerBackButtonMenuEnabled: true
 
+              }
             }
+
+          />
+          <Stack.Screen name="homepage" component={
+            Homepage
+
           }
+            options={
+              {
+                headerShown: true,
+                headerBackButtonMenuEnabled: true
 
-        />
-        <Stack.Screen name="homepage" component={
-          Homepage
-
-        }
-          options={
-            {
-              headerShown: true,
-              headerBackButtonMenuEnabled: true
-
+              }
             }
-          }
-        />
+          />
 
-        <Stack.Screen name="Verification" component={Verification}
-          options={
-            {
-              headerShown: true,
-              headerBackButtonMenuEnabled: true
+          <Stack.Screen name="Verification" component={Verification}
+            options={
+              {
+                headerShown: true,
+                headerBackButtonMenuEnabled: true
 
+              }
             }
-          }
-        />
-        <Stack.Screen name="Users" component={
-          UserComponent}
-          options={
-            {
-              headerShown: true,
-              headerBackButtonMenuEnabled: true
+          />
+          <Stack.Screen name="Users" component={
+            UserComponent}
+            options={
+              {
+                headerShown: true,
+                headerBackButtonMenuEnabled: true
 
+              }
             }
-          }
-        />
-        <Stack.Screen name="Projects" component={
-          AccountComponent}
-          options={
-            {
-              headerShown: true,
-              headerBackButtonMenuEnabled: true
+          />
+          <Stack.Screen name="Projects" component={
+            AccountComponent}
+            options={
+              {
+                headerShown: true,
+                headerBackButtonMenuEnabled: true
 
+              }
             }
-          }
-        />
-        <Stack.Screen name="Files" component={
-          FileComponent}
-          options={
-            {
-              headerShown: true,
-              headerBackButtonMenuEnabled: true
+          />
 
-            }
-          }
-          initialParams={{ id:undefined}}
-        />
- <Stack.Screen name="Upload" component={
-          UploadComponent}
-          options={
-            {
-              headerShown: true,
-              headerBackButtonMenuEnabled: true
+          <Stack.Screen name="showFilesTable" component={
+            ShowTableFilesComponent}
+            options={
+              {
+                headerShown: true,
+                headerBackButtonMenuEnabled: true
 
+              }
             }
-          }
-          initialParams={{ id:undefined}}
-        />
-      </Stack.Navigator>
+            initialParams={{ id: undefined }}
+          />
+        </Stack.Navigator>
+      </PaperProvider>
     </NavigationContainer>
 
 

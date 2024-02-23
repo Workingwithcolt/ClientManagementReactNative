@@ -2,27 +2,20 @@
 import { UPDATE_ON_ACCOUNT, endpoints } from "../Endpoints/endpoints"
 import { NODATA, users } from "../helper/extrapropertise"
 import DataView from "../GenericComponent/Dataview"
-import { SafeAreaView, View, Text } from "react-native-web"
+import { SafeAreaView, View } from "react-native-web"
 import { dataview } from "../styles/Dataview"
 import { ProjectDetailView } from "./ProjectDetailView"
+import {  Card, Text } from 'react-native-paper';
 
-const Card = ({ item }) => {
+const ResponsiveCard = ({ item }) => {
     return (
-        <SafeAreaView style={dataview.card} >
-            <View >
-                <View >
-                    <Text style={dataview.textStyle}>
-                        {item.clientName || NODATA}
-                    </Text>
-                    <Text style={dataview.textStyle || NODATA} >
-                        {item.email}
-                    </Text>
-                    <Text style={dataview.textStyle || NODATA}>
-                        {item.aadhar}
-                    </Text>
-                </View>
-            </View>
-        </SafeAreaView>
+        <Card style={{minWidth:"500px"}}>
+            <Card.Content>
+                <Text variant="titleLarge"> {item.clientName || NODATA}</Text>
+                <Text variant="bodyMedium"> {item.email}</Text>
+                <Text variant="bodyMedium"> {item.aadhar}</Text>
+            </Card.Content>
+        </Card>
     )
 }
 
@@ -48,10 +41,10 @@ export const Projects = ({ navigation }) => {
                 queryFunction={queryFunction}
                 queryKey={queryKey}
                 getSearchableValue={getValueToSearch}
-                Card={Card}
+                Card={ResponsiveCard}
                 dataviewTitle={"Projects"}
                 navigation={navigation}
-                DetailedElement = {ProjectDetailView}
+                DetailedElement={ProjectDetailView}
             />
         </SafeAreaView>
     )

@@ -231,26 +231,26 @@ const ProjectDetailsModal = ({ navigation }) => {
             <Text>Section 5:Add Slab files</Text>
             <View>
               {
-                state?.[Propertylist.firstSlab.name] && Object.entries(state[Propertylist.firstSlab.name])?.map((element, index) => {
+                state?.[Propertylist.Slab.name] && Object.entries(state[Propertylist.Slab.name])?.map((element, index) => {
                   return (
                     <View >
-                      <label for={Propertylist.firstSlab.name} style={{ marginTop: 0 }}>{Propertylist.firstSlab.placeholder}</label>
+                      <label for={Propertylist.Slab.name} style={{ marginTop: 0 }}>{Propertylist.Slab.placeholder}</label>
                       <input
-                        id={Propertylist.firstSlab.name}
-                        placeholder={Propertylist.firstSlab.placeholder}
+                        id={Propertylist.Slab.name}
+                        placeholder={Propertylist.Slab.placeholder}
                         // value={element}
                         onChange={async (e) =>
-                          await ConvertToBase64(index, Propertylist.firstSlab.name, e)
+                          await ConvertToBase64(index, Propertylist.Slab.name, e)
                         }
-                        type={Propertylist.firstSlab.type}
-                        style={Propertylist.firstSlab.style}
+                        type={Propertylist.Slab.type}
+                        style={Propertylist.Slab.style}
                       />
                     </View>
                   )
                 })
               }
               <Button title="Add" onPress={() => {
-                dispatch({ type: ADD_ARRAY, payload: { name: Propertylist.firstSlab.name } })
+                dispatch({ type: ADD_ARRAY, payload: { name: Propertylist.Slab.name } })
               }} />
             </View>
             <Button title="Submit" onPress={() => Modal1Bkcall()} />

@@ -1,4 +1,4 @@
-import { Button, SafeAreaView, ScrollView } from "react-native-web";
+import { Button, Dimensions, SafeAreaView, ScrollView } from "react-native-web";
 import { dataview } from "../styles/Dataview";
 import { View, Text } from "react-native";
 import { TableList } from "../GenericComponent/CardList";
@@ -7,11 +7,12 @@ import { BodyList } from "../GenericComponent/BodyList";
 import { NODATA } from "../helper/extrapropertise";
 
 export const ProjectDetailView = ({ item, navigation }) => {
+    const screenHeight = Dimensions.get('window').height
     return (
-        <SafeAreaView style={dataview.DetailView} >
+        <SafeAreaView>
             <BodyList
                 body={
-                    <View style={dataview.heightAndOverflow}>
+                    <View style={{ height: screenHeight }}>
                         <ScrollView >
                             <table style={CommonClass.table}>
                                 {
@@ -19,6 +20,35 @@ export const ProjectDetailView = ({ item, navigation }) => {
                                         if (!(key == "_id" || key == "__v" || value instanceof Array || value instanceof Object)) {
                                             return (
                                                 <TableList name={key} key={key} value={value || NODATA} />
+                                            )
+                                        } else if (value instanceof Array
+                                        ) {
+                                            return (
+                                                <TableList
+                                                    name={key}
+                                                    value={
+                                                        <Button title="showFiles" onPress={() =>
+                                                            navigation.navigate('showFilesTable', {
+                                                                key: key,
+                                                                value: value
+                                                            })
+                                                        } />
+                                                    }
+                                                />
+                                            )
+                                        } else if (value instanceof Object) {
+                                            return (
+                                                <TableList
+                                                    name={key}
+                                                    value={
+                                                        <Button title="showFiles" onPress={() =>
+                                                            navigation.navigate('showFilesTable', {
+                                                                key: key,
+                                                                value: [value]
+                                                            })
+                                                        } />
+                                                    }
+                                                />
                                             )
                                         }
                                     })
@@ -29,13 +59,6 @@ export const ProjectDetailView = ({ item, navigation }) => {
                 }
                 label={"Detail"}
             />
-            <View>
-                <Button title="Files" onPress={() =>
-                    navigation.navigate('Files', {
-                        id: item._id,
-                    })
-                } />
-            </View>
         </SafeAreaView>
     )
 }

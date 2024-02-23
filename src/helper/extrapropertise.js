@@ -186,9 +186,9 @@ export const Propertylist = {
         style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
         type: SchemaTypes.file
     },
-    firstSlab: {
-        name: "firstSlab",
-        placeholder: "firstSlab",
+    Slab: {
+        name: "Slab",
+        placeholder: "Slab",
         style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
         type: SchemaTypes.file
     },

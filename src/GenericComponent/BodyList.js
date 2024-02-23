@@ -1,13 +1,16 @@
-import { View, Text } from "react-native-web"
-import { CommonClass } from "../styles/Commonclass"
+import { SafeAreaView, View } from "react-native-web"
+import { Text } from 'react-native-paper';
+import { dataview } from "../styles/Dataview";
 
 export const BodyList = ({ label, body }) => {
     return (
-        <View>
-            <Text style={CommonClass.textStyle}>{label}</Text>
+        <SafeAreaView>
             <View>
-                {body}
+                <Text style={dataview.textStyle} variant="bodyMedium">{label}</Text>
+                <View>
+                    {body}
+                </View>
             </View>
-        </View>
+        </SafeAreaView>
     )
 }

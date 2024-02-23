@@ -25,3 +25,9 @@ export const getIndex = (obj) => {
     }
     return Object.keys(obj).length + 1;
 }
+
+export const ShowPdf = async (value) => {
+    const r = await fetch(value);
+    const blob = await r.blob();
+    window.open(URL.createObjectURL(blob), "_blank");
+}

@@ -48,12 +48,6 @@ function DataView({ queryFunction, queryKey, getSearchableValue, Card, DetailedE
         return (
             <SafeAreaView style={dataview.container}>
                 <View style={dataview.DataviewHeader}>
-                    <View style={dataview.text}>
-                        {dataviewTitle}
-                    </View>
-                    <Button style={dataview.back} title="Back" onPress={() =>
-                        navigation.navigate('homepage')
-                    } />
                 </View>
                 <View style={dataview.stickyInput} >
                     <TextInput

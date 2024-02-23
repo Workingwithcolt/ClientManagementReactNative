@@ -14,7 +14,7 @@ export const dataview = {
     },
     container: {
         width: '100%',
-        height: '100%',
+        height: 'auto',
         display: 'flex',
         flexDirection: 'column',
         backgroundColor: '#fff',
@@ -58,8 +58,7 @@ export const dataview = {
         opacity: 1,
     },
     heightAndOverflow: {
-        height: "80%",
-        overflow: 'auto'
+        height: "auto",
     },
     DataviewHeader: {
         display: "flex",
@@ -76,17 +75,20 @@ export const dataview = {
         borderRadius: 8,
         flex: 1,
         flexDirection: "column",
-        height: '100%',
+        height: 'auto',
         width: '100%',
-        maxHeight: '100%',
         maxWidth: '100%',
         overflow: 'auto',
         padding: '5px',
         gap: 0
     },
     img: {
-        width: "200px",
-        height: "200px"
-    },
+        width: 200,
+        height: 200,
+        borderRadius: 10,
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
 
 };

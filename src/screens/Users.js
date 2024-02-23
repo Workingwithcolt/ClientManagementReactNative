@@ -4,24 +4,17 @@ import { users } from "../helper/extrapropertise"
 import DataView from "../GenericComponent/Dataview"
 import { SafeAreaView, View, Text } from "react-native-web"
 import { dataview } from "../styles/Dataview"
+import { Card } from "react-native-paper"
 
-const Card = ({ item }) => {
+const ResponsiveCard = ({ item }) => {
     return (
-        <SafeAreaView style={dataview.card} >
-            <View >
-                <View >
-                    <Text style={dataview.textStyle}>
-                        {item.name}
-                    </Text>
-                    <Text style={dataview.textStyle} >
-                        {item.email}
-                    </Text>
-                    <Text style={dataview.textStyle}>
-                        {item.address}
-                    </Text>
-                </View>
-            </View>
-        </SafeAreaView>
+        <Card style={{ minWidth: "500px" }}>
+            <Card.Content>
+                <Text variant="bodyMedium">  {item.name}</Text>
+                <Text variant="bodyMedium"> {item.email}</Text>
+                <Text variant="bodyMedium">  {item.address}</Text>
+            </Card.Content>
+        </Card>
     )
 }
 
@@ -44,7 +37,7 @@ export const Users = ({ navigation }) => {
                 queryFunction={queryFunction}
                 queryKey={queryKey}
                 getSearchableValue={getValueToSearch}
-                Card={Card}
+                Card={ResponsiveCard}
                 dataviewTitle={"Users"}
                 navigation={navigation}
             />
