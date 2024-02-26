@@ -40,5 +40,11 @@ export const CommonClass = {
         backgroundColor: ' #fff',
         border: '2px solid var(--input - border)',
         borderRadius: ' 4px'
-    }
+    },
+    sectionTitle:{
+        fontSize: '14px',
+        paddingBottom: 0,
+        textAlign: 'center',
+        fontWeight:"bold"
+    },
 }

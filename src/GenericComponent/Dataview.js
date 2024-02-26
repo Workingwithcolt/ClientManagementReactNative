@@ -76,8 +76,8 @@ function DataView({ queryFunction, queryKey, getSearchableValue, Card, DetailedE
                                     <View >
                                         {
                                             data.map((item, index) =>
-                                                <View style={dataview.cardContainer} key={index} onClick={() => setSelectedItem(item)}>
-                                                    <Card item={item}></Card>
+                                                <View style={dataview.cardContainer} key={index} >
+                                                    <Card item={item} navigation={navigation} setSelectedItem = {setSelectedItem}></Card>
                                                 </View>
                                             )
                                         }

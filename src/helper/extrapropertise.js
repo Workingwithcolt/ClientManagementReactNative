@@ -38,170 +38,315 @@ export const Propertylist = {
     title: {
         name: "title",
         placeholder: "title",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.String
     },
     clientName: {
         name: "clientName",
         placeholder: "clientName",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.String
     },
     projectType: {
         name: "projectType",
         placeholder: "projectType",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.String
     },
     projectHead: {
         name: "projectHead",
         placeholder: "projectHead",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.String
     },
     rccDesignerName: {
         name: "rccDesignerName",
         placeholder: "rccDesignerName",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.String
     },
     BuildingApprovalDate: {
         name: "BuildingApprovalDate",
         placeholder: "Building Approval Date",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.DATE
     },
     plinth: {
         name: "plinth",
         placeholder: "plinth",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.String
     },
     buildingCompletionDate: {
         name: "buildingCompletionDate",
         placeholder: "buildingCompletionDate",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.String
     }, pan: {
         name: "pan",
         placeholder: "pan",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.String
     },
     adhar: {
         name: "adhar",
         placeholder: "adhar",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.String
     },
     pin: {
         name: "pin",
         placeholder: "pin",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.String
     },
     email: {
         name: "email",
         placeholder: "email",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.EMAIL
     },
     PresentationDraw: {
         name: "PresentationDraw",
         placeholder: "PresentationDraw",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.file
     },
     FileModel3D: {
         name: "FileModel3D",
         placeholder: "FileModel3D",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.file
     },
     AllFloorPlan: {
         name: "AllFloorPlan",
         placeholder: "AllFloorPlan",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.String
     }, AllElevation: {
         name: "AllElevation",
         placeholder: "AllElevation",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.String
     }, toilet: {
         name: "toilet",
         placeholder: "toilet",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.String
     }, submissionDate: {
         name: "submissionDate",
         placeholder: "submissionDate",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.DATE
     }, Plint: {
         name: "Plint",
         placeholder: "Plint",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.String
     },
     RevisedSactionDate: {
         name: "RevisedSactionDate",
         placeholder: "RevisedSactionDate",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.DATE
     },
     CompletionDate: {
         name: "CompletionDate",
         placeholder: "CompletionDate",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.DATE
     },
     RCCDrawing1: {
         name: "RCCDrawing1",
         placeholder: "RCCDrawing1",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.file
     },
     RCCDrwaing2: {
         name: "RCCDrwaing2",
         placeholder: "RCCDrwaing2",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.file
     },
     ColumnFooting: {
         name: "ColumnFooting",
         placeholder: "ColumnFooting",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.String
     },
     PleanthBeam: {
         name: "PleanthBeam",
         placeholder: "PleanthBeam",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.String
     },
     StairCaseDraw: {
         name: "StairCaseDraw",
         placeholder: "StairCaseDraw",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.file
     },
     Slab: {
         name: "Slab",
         placeholder: "Slab",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.file
     },
     SecondSlab: {
         name: "SecondSlab",
         placeholder: "SecondSlab",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.file
     },
     ThirdSlab: {
         name: "ThirdSlab",
         placeholder: "ThirdSlab",
-        style: { height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 },
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
         type: SchemaTypes.file
     },
 }

@@ -83,6 +83,7 @@ export const dataview = {
         gap: 0
     },
     img: {
+        display:'flex',
         width: 200,
         height: 200,
         borderRadius: 10,
@@ -90,5 +91,10 @@ export const dataview = {
         alignItems: 'center',
         justifyContent: 'center',
       },
+      fileContainer:{
+        display:"flex",
+        flexDirection:'column',
+        gap:0
+      }
 
 };

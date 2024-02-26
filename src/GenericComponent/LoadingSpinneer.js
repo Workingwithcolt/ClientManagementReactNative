@@ -1,10 +1,10 @@
-import { MD2Colors } from "react-native-paper";
-import { View, Text, ActivityIndicator } from "react-native-web";
+import { MD2Colors,ActivityIndicator } from "react-native-paper";
+import { View, Text } from "react-native-web";
 
-function LoadingSpinner() {
+function LoadingSpinner({size = 'small'}) {
     return (
         <View role="status">
-          <ActivityIndicator animating={true} color={MD2Colors.red800} />
+          <ActivityIndicator animating={true} size={size} color={MD2Colors.red800} />
         </View>
     )
 }

@@ -11,6 +11,7 @@ import { Users } from './src/screens/Users';
 import { Projects } from './src/screens/Projects';
 import { PaperProvider, MD3LightTheme as DefaultTheme, } from 'react-native-paper';
 import { ShowTableFiles } from './src/GenericComponent/ShowTableFiles';
+import { ProjectModal } from './src/GenericComponent/ProjectModal';
 
 
 const lightTheme = {
@@ -88,6 +89,14 @@ const ShowTableFilesComponent = ({ navigation, route }) => {
   )
 }
 
+const HomepageComponent = ({ navigation, route }) => {
+  return (
+    <GenericBodyCard>
+      < Homepage navigation={navigation} route={route} />
+    </GenericBodyCard>
+  )
+}
+
 export default function App() {
   return (
     <NavigationContainer>
@@ -121,8 +130,7 @@ export default function App() {
 
           />
           <Stack.Screen name="homepage" component={
-            Homepage
-
+            HomepageComponent
           }
             options={
               {
@@ -131,6 +139,19 @@ export default function App() {
 
               }
             }
+            initialParams={{ id: undefined }}
+          />
+          <Stack.Screen name="modal" component={
+            ProjectModal
+          }
+            options={
+              {
+                headerShown: true,
+                headerBackButtonMenuEnabled: true
+
+              }
+            }
+            initialParams={{ data: undefined }}
           />
 
           <Stack.Screen name="Verification" component={Verification}
