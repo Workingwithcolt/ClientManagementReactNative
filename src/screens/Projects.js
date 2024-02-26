@@ -90,11 +90,9 @@ export const Projects = ({ navigation }) => {
     const queryKey = [UPDATE_ON_ACCOUNT]
     const queryFunction = async () => {
         var accounts = await endpoints.Account.getAll()
-        console.log(accounts);
         return accounts
     }
     const getValueToSearch = (current) => {
-        console.log(current);
         return (
             (current?.email +
                 current?.clientName +

@@ -56,7 +56,6 @@ export const ProjectModal = ({ init = {}, onSubmit, modalVisible, setModalVisibl
     const queryClient = useQueryClient();
     const ConvertToBase64 = async (index, name, e) => {
         let data = await blobToBase64(e.target.files[0])
-        console.log(e.target.files[0]?.type);
         dispatch({
             type: UPDATE_PROP_VALUES, payload:
                 { ContentType: e.target.files[0]?.type, index: index, name: name, value: data, fileName: e.target.files[0]?.name }
@@ -65,7 +64,6 @@ export const ProjectModal = ({ init = {}, onSubmit, modalVisible, setModalVisibl
     const Onchange = async (e, element) => {
         if (element.type === SchemaTypes.file) {
             let data = await blobToBase64(e.target.files[0])
-            console.log(e.target.files[0]);
             dispatch({ type: ADD_PROPS_TYPE, payload: { fileName: e.target.files[0]?.name, name: element.name, value: data, ContentType: e.target.files[0]?.type } })
         } else {
             dispatch({ type: ADD_PROPS_TYPE, payload: { name: element.name, value: e.target.value } })
@@ -259,8 +257,6 @@ export const ProjectModal = ({ init = {}, onSubmit, modalVisible, setModalVisibl
                                                 let value = undefined
                                                 if (element.type !== SchemaTypes.file) {
                                                     value = state[element.name] ? state[element.name] : ""
-                                                } else {
-                                                    console.log(state[element.name]);
                                                 }
                                                 return (
                                                     <>
