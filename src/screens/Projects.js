@@ -1,9 +1,8 @@
 
 import { UPDATE_ON_ACCOUNT, endpoints } from "../Endpoints/endpoints"
-import { NODATA, users } from "../helper/extrapropertise"
+import { NODATA } from "../helper/extrapropertise"
 import DataView from "../GenericComponent/Dataview"
 import { Button, SafeAreaView, View } from "react-native-web"
-import { dataview } from "../styles/Dataview"
 import { ProjectDetailView } from "./ProjectDetailView"
 import { Card, Text } from 'react-native-paper';
 import { ProjectModal } from "../GenericComponent/ProjectModal"
@@ -63,25 +62,25 @@ const ResponsiveCard = ({ item, navigation, setSelectedItem }) => {
                     />
                     : <></>
             }
-            <Card.Actions>
 
-                {
-                    status.isloading ?
-                        <View>
-                            <LoadingSpinner />
-                        </View >
-                        : status.error ? (<View>
-                            {status.error}
-                        </View>)
-                            : status.isSuccess ?
-                                (<View>
-                                    Deleted Successfully !!
-                                </View>)
-                                :
-                                (<> <Button title="Detail" onPress={() => setSelectedItem(item)} />
-                                    <Button title="update" onPress={() => setModalVisible(true)} />
-                                    <Button title="delete" onPress={async () => await deleteItem(item)} /></>)}
-            </Card.Actions>
+            {
+                status.isloading ?
+                    <View>
+                        <LoadingSpinner />
+                    </View >
+                    : status.error ? (<View>
+                        {status.error}
+                    </View>)
+                        : status.isSuccess ?
+                            (<View>
+                                Deleted Successfully !!
+                            </View>)
+                            :
+                            (<Card.Actions>
+                                <Button style={{ paddingRight: '10px' }} title="detail" onPress={() => setSelectedItem(item)} />
+                                <Button title={"edit"} onPress={() => setModalVisible(true)} />
+                                <Button title="delete" onPress={async () => await deleteItem(item)} />
+                            </Card.Actions>)}
         </Card>
     )
 }

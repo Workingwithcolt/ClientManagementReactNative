@@ -8,7 +8,6 @@ import { urlHead } from '../helper/extrapropertise'
 
 const Verification = ({ navigation, route }) => {
     const { userdata } = route.params;
-    console.log(userdata);
     const [errormsg, setErrormsg] = useState(null);
     const [userCode, setUserCode] = useState('XXXX');
     const [actualCode, setActualCode] = useState(null);

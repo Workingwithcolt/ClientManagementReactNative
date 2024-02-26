@@ -349,8 +349,83 @@ export const Propertylist = {
         },
         type: SchemaTypes.file
     },
+    pleanthCompletion: {
+        name: "pleanthCompletion",
+        placeholder: "pleanthCompletion",
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
+        type: SchemaTypes.String
+    },
+    SanctionDrawing: {
+        name: "SanctionDrawing",
+        placeholder: "SanctionDrawing",
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
+        type: SchemaTypes.file
+    }
+    ,
+    SanctionLetter: {
+        name: "SanctionLetter",
+        placeholder: "SanctionLetter",
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
+        type: SchemaTypes.file
+    },
+    ReviseSanction: {
+        name: "ReviseSanction",
+        placeholder: "ReviseSanction",
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
+        type: SchemaTypes.file
+    },
+    CompletionLetter: {
+        name: "CompletionLetter",
+        placeholder: "CompletionLetter",
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
+        type: SchemaTypes.file
+    },
+    Drawing: {
+        name: "Drawing",
+        placeholder: "Drawing",
+        style: {
+            height: '30px',
+            borderColor: 'gray',
+            borderWidth: '1px',
+            marginTop: '10px'
+        },
+        type: SchemaTypes.file
+    }
 }
 
+export const Section6 = [
+    Propertylist.SanctionDrawing,
+    Propertylist.SanctionLetter,
+    Propertylist.pleanthCompletion,
+    Propertylist.ReviseSanction,
+    Propertylist.CompletionLetter,
+    Propertylist.Drawing
+]
 export const Section1 = [
     Propertylist.title,
     Propertylist.clientName,

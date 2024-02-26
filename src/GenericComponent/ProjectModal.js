@@ -1,6 +1,6 @@
 import React, { useReducer, useState } from 'react';
 import { Modal, View, Button, Text, ScrollView } from 'react-native';
-import { JPG_CONTENT_TYPE, PNG_CONTENT_TYPE, Propertylist, SchemaTypes, Section1, Section4, Section5 } from '../helper/extrapropertise';
+import { JPG_CONTENT_TYPE, PNG_CONTENT_TYPE, Propertylist, SchemaTypes, Section1, Section4, Section5, Section6 } from '../helper/extrapropertise';
 import { blobToBase64, deepCopyObject } from '../helper/helper';
 import { dataview } from '../styles/Dataview';
 import ModallImageView from '../screens/ModalImageView';
@@ -106,7 +106,7 @@ export const ProjectModal = ({ init = {}, onSubmit, modalVisible, setModalVisibl
                             </View>)
                                 : isSuccess ?
                                     (<View>
-                                        Added Successfully !!
+                                        Added or Updated Successfully !!
                                     </View>)
                                     :
                                     <View>
@@ -316,6 +316,39 @@ export const ProjectModal = ({ init = {}, onSubmit, modalVisible, setModalVisibl
                                                 dispatch({ type: ADD_ARRAY, payload: { name: Propertylist.Slab.name } })
                                             }} />
                                         </View>
+                                        <Divider />
+                                        <Text style={CommonClass.sectionTitle}>Section 6</Text>
+                                        {
+                                            Section6.map(element => {
+                                                let value = undefined
+                                                if (element.type !== SchemaTypes.file) {
+                                                    value = state[element.name] ? state[element.name] : ""
+                                                }
+                                                return (
+                                                    <>
+                                                        <label for={element.name} style={{ marginTop: 0 }}>{element.placeholder}</label>
+                                                        <input
+                                                            id={element.name}
+                                                            placeholder={element.placeholder}
+                                                            value={value}
+                                                            onChange={(e) =>
+                                                                Onchange(e, element)
+                                                            }
+                                                            type={element.type}
+                                                            style={element.style}
+                                                        />
+                                                        {
+                                                            (state[element.name] && element.type === SchemaTypes.file)
+                                                            &&
+                                                            <ModallImageView
+                                                                title={state[element.name].fileName}
+                                                                src={state[element.name].value}
+                                                            />
+                                                        }
+                                                    </>
+                                                )
+                                            })
+                                        }
                                         <Button title="Submit" onPress={() => mutate()} />
                                     </View>
 
