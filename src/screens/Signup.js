@@ -37,7 +37,7 @@ const Signup = ({ navigation }) => {
                 return;
             }
             else {
-                fetch( `http://${urlHead}/verify`, {
+                fetch( `https://${urlHead}/verify`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
