@@ -4,7 +4,7 @@ import Signup from './src/screens/Signup';
 import Welcome from './src/screens/Welcome';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Homepage from './src/screens/Homepage';
+import ProjectDetailsModal from './src/screens/Homepage';
 import Verification from './src/screens/Verification';
 import GenericBodyCard from './src/GenericComponent/GenericBodyCard';
 import { Users } from './src/screens/Users';
@@ -92,7 +92,7 @@ const ShowTableFilesComponent = ({ navigation, route }) => {
 const HomepageComponent = ({ navigation, route }) => {
   return (
     <GenericBodyCard>
-      < Homepage navigation={navigation} route={route} />
+      < ProjectDetailsModal navigation={navigation} route={route} />
     </GenericBodyCard>
   )
 }

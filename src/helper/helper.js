@@ -1,3 +1,4 @@
+import { readAsStringAsync, EncodingType,StorageAccessFramework,writeAsStringAsync } from "expo-file-system"
 export const blobToBase64 = async (blob) => {
     return new Promise((resolve, reject) => {
         var reader = new FileReader();
@@ -31,3 +32,18 @@ export const ShowPdf = async (value) => {
     const blob = await r.blob();
     window.open(URL.createObjectURL(blob), "_blank");
 }
+
+
+export function getDateString(dateString) {
+    var date = new Date(dateString);
+    return date.toLocaleDateString();
+}
+
+export const ConvertBase64Format = async (data) => {
+    let uri = data.assets[0]['uri'];
+    let name = data.assets[0]['name']
+    let content = await readAsStringAsync(uri, { encoding: EncodingType.Base64 });
+    return { value: content, ContentType: data.assets[0]['mimeType'], fileName: name };
+}
+
+

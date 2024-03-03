@@ -1,6 +1,6 @@
 export const SchemaTypes = {
-    Number: "Number",
-    String: "String",
+    Number: "numeric",
+    String: "text",
     UUID: "UUID",
     KN_PAN: "KN_PAN",
     KN_PIN: "KN_PIN",
@@ -27,22 +27,22 @@ export const SchemaTypes = {
     Title: "title"
 }
 
-export const urlHead = 'localhost:3000/auth'
+export const urlHead = 'backend-client-management.vercel.app/auth'
 export const users = "Users"
 export const NODATA = "NoData"
 export const JPG_CONTENT_TYPE = 'image/jpeg'
 export const PNG_CONTENT_TYPE = 'image/png'
 export const PDF_CONTENT_TYPE = "application/pdf"
-
+export const INVALID_DATE = "Invalid Date"
 export const Propertylist = {
     title: {
         name: "title",
         placeholder: "title",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.String
     },
@@ -50,10 +50,10 @@ export const Propertylist = {
         name: "clientName",
         placeholder: "clientName",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.String
     },
@@ -61,10 +61,10 @@ export const Propertylist = {
         name: "projectType",
         placeholder: "projectType",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.String
     },
@@ -72,10 +72,10 @@ export const Propertylist = {
         name: "projectHead",
         placeholder: "projectHead",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.String
     },
@@ -83,10 +83,10 @@ export const Propertylist = {
         name: "rccDesignerName",
         placeholder: "rccDesignerName",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.String
     },
@@ -94,10 +94,10 @@ export const Propertylist = {
         name: "BuildingApprovalDate",
         placeholder: "Building Approval Date",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.DATE
     },
@@ -105,10 +105,10 @@ export const Propertylist = {
         name: "plinth",
         placeholder: "plinth",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.String
     },
@@ -116,20 +116,20 @@ export const Propertylist = {
         name: "buildingCompletionDate",
         placeholder: "buildingCompletionDate",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.String
     }, pan: {
         name: "pan",
         placeholder: "pan",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.String
     },
@@ -137,10 +137,10 @@ export const Propertylist = {
         name: "adhar",
         placeholder: "adhar",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.String
     },
@@ -148,10 +148,10 @@ export const Propertylist = {
         name: "pin",
         placeholder: "pin",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.String
     },
@@ -159,10 +159,10 @@ export const Propertylist = {
         name: "email",
         placeholder: "email",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.EMAIL
     },
@@ -172,7 +172,7 @@ export const Propertylist = {
         style: {
             height: '30px',
             borderColor: 'gray',
-            borderWidth: '1px',
+            // borderWidth: '1px',
             marginTop: '10px'
         },
         type: SchemaTypes.file
@@ -183,7 +183,7 @@ export const Propertylist = {
         style: {
             height: '30px',
             borderColor: 'gray',
-            borderWidth: '1px',
+            // borderWidth: '1px',
             marginTop: '10px'
         },
         type: SchemaTypes.file
@@ -192,50 +192,50 @@ export const Propertylist = {
         name: "AllFloorPlan",
         placeholder: "AllFloorPlan",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.String
     }, AllElevation: {
         name: "AllElevation",
         placeholder: "AllElevation",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.String
     }, toilet: {
         name: "toilet",
         placeholder: "toilet",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.String
     }, submissionDate: {
         name: "submissionDate",
         placeholder: "submissionDate",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.DATE
     }, Plint: {
         name: "Plint",
         placeholder: "Plint",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.String
     },
@@ -243,10 +243,10 @@ export const Propertylist = {
         name: "RevisedSactionDate",
         placeholder: "RevisedSactionDate",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.DATE
     },
@@ -254,10 +254,10 @@ export const Propertylist = {
         name: "CompletionDate",
         placeholder: "CompletionDate",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.DATE
     },
@@ -265,10 +265,10 @@ export const Propertylist = {
         name: "RCCDrawing1",
         placeholder: "RCCDrawing1",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.file
     },
@@ -276,10 +276,10 @@ export const Propertylist = {
         name: "RCCDrwaing2",
         placeholder: "RCCDrwaing2",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.file
     },
@@ -287,10 +287,10 @@ export const Propertylist = {
         name: "ColumnFooting",
         placeholder: "ColumnFooting",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.String
     },
@@ -298,10 +298,10 @@ export const Propertylist = {
         name: "PleanthBeam",
         placeholder: "PleanthBeam",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.String
     },
@@ -309,10 +309,10 @@ export const Propertylist = {
         name: "StairCaseDraw",
         placeholder: "StairCaseDraw",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.file
     },
@@ -320,10 +320,10 @@ export const Propertylist = {
         name: "Slab",
         placeholder: "Slab",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.file
     },
@@ -331,10 +331,10 @@ export const Propertylist = {
         name: "SecondSlab",
         placeholder: "SecondSlab",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.file
     },
@@ -342,10 +342,10 @@ export const Propertylist = {
         name: "ThirdSlab",
         placeholder: "ThirdSlab",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.file
     },
@@ -353,10 +353,10 @@ export const Propertylist = {
         name: "pleanthCompletion",
         placeholder: "pleanthCompletion",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.String
     },
@@ -364,10 +364,10 @@ export const Propertylist = {
         name: "SanctionDrawing",
         placeholder: "SanctionDrawing",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.file
     }
@@ -376,10 +376,10 @@ export const Propertylist = {
         name: "SanctionLetter",
         placeholder: "SanctionLetter",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.file
     },
@@ -387,10 +387,10 @@ export const Propertylist = {
         name: "ReviseSanction",
         placeholder: "ReviseSanction",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.file
     },
@@ -398,10 +398,10 @@ export const Propertylist = {
         name: "CompletionLetter",
         placeholder: "CompletionLetter",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.file
     },
@@ -409,10 +409,10 @@ export const Propertylist = {
         name: "Drawing",
         placeholder: "Drawing",
         style: {
-            height: '30px',
-            borderColor: 'gray',
-            borderWidth: '1px',
-            marginTop: '10px'
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
         },
         type: SchemaTypes.file
     }

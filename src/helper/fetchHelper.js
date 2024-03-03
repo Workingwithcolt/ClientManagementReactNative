@@ -1,7 +1,7 @@
 import { urlHead } from "./extrapropertise";
 
 export const fetchHelper = async (endpoint, method, data, options) => {
-    var url = `http://localhost:3000/${endpoint}`
+    var url = `https://backend-client-management.vercel.app/${endpoint}`
     if (options) {
         const queryParams = new URLSearchParams(options);
         url = url + `?${queryParams.toString()}`;

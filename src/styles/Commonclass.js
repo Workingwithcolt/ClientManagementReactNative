@@ -2,7 +2,7 @@ export const CommonClass = {
     textStyle: {
         flex: 1,
         color: '#000',
-        fontSize: 'calc(5px + 2vw)',
+        // fontSize: 'calc(5px + 2vw)',
         paddingHorizontal: 10,
         paddingVertical: 5,
         borderRadius: 8,
@@ -33,18 +33,49 @@ export const CommonClass = {
         gap: "10px"
     },
     input: {
-        fontSize: " 16px",
-        fontSize: 'max(16px, 1em)',
+        // fontSize: " 16px",
+        // fontSize: 'max(16px, 1em)',
         fontFamily: ' inherit',
         padding: '0.25em 0.5em',
         backgroundColor: ' #fff',
         border: '2px solid var(--input - border)',
         borderRadius: ' 4px'
     },
-    sectionTitle:{
-        fontSize: '14px',
+    sectionTitle: {
+        // fontSize: '14px',
         paddingBottom: 0,
         textAlign: 'center',
-        fontWeight:"bold"
+        fontWeight: "bold"
     },
+    Editbutton: {
+        alignItems: 'center',
+        backgroundColor: 'mediumblue',
+        padding: 10,
+        borderRadius: 5
+    },
+    chooseFile: {
+        alignItems: 'center',
+        backgroundColor: '#DDDDDD',
+        padding: 10,
+        borderRadius: 5
+    },
+    AddButton: {
+        alignItems: 'center',
+        backgroundColor: '#DDDDDD',
+        padding: 10,
+        borderRadius: 5,
+        margin: '0 auto'
+    },
+    Downloadbutton: {
+        display: 'flex',
+        alignItems: 'flex-end',
+        backgroundColor: '#DDDDDD',
+        padding: 10,
+        borderRadius: 5,
+        height: '30%'
+    },
+    TextWrap: {
+        textOverflow: 'ellipsis',
+
+    }
 }

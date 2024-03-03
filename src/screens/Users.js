@@ -2,7 +2,8 @@
 import { UPDATE_ON_USER, endpoints } from "../Endpoints/endpoints"
 import { users } from "../helper/extrapropertise"
 import DataView from "../GenericComponent/Dataview"
-import { SafeAreaView, View, Text } from "react-native-web"
+// import { SafeAreaView, View, Text } from "react-native-web"
+import { Text } from "react-native-paper"
 import { dataview } from "../styles/Dataview"
 import { Card } from "react-native-paper"
 import { CommonClass } from "../styles/Commonclass"
@@ -23,7 +24,7 @@ export const Users = ({ navigation }) => {
     const queryKey = [UPDATE_ON_USER]
     const queryFunction = async () => {
         var data = await endpoints.Users.getAll()
-        var accounts = await endpoints.Account.getAll()
+        console.log(data);
         return data
     }
     const getValueToSearch = (current) => {
@@ -33,7 +34,6 @@ export const Users = ({ navigation }) => {
     }
 
     return (
-        <SafeAreaView >
             <DataView
                 queryFunction={queryFunction}
                 queryKey={queryKey}
@@ -42,7 +42,6 @@ export const Users = ({ navigation }) => {
                 dataviewTitle={"Users"}
                 navigation={navigation}
             />
-        </SafeAreaView>
     )
 
 }

@@ -1,6 +1,5 @@
-import { Button, Dimensions, SafeAreaView, ScrollView } from "react-native-web";
 import { dataview } from "../styles/Dataview";
-import { View, Text } from "react-native";
+import { View, Text, Button, Dimensions, SafeAreaView, ScrollView } from "react-native";
 import { TableList } from "../GenericComponent/CardList";
 import { CommonClass } from "../styles/Commonclass";
 import { BodyList } from "../GenericComponent/BodyList";
@@ -14,7 +13,7 @@ export const ProjectDetailView = ({ item, navigation }) => {
                 body={
                     <View style={{ height: screenHeight }}>
                         <ScrollView >
-                            <table style={CommonClass.table}>
+                            <View style={CommonClass.View}>
                                 {
                                     Object.entries(item).map(([key, value]) => {
                                         if (!(key == "_id" || key == "__v" || value instanceof Array || value instanceof Object)) {
@@ -53,7 +52,7 @@ export const ProjectDetailView = ({ item, navigation }) => {
                                         }
                                     })
                                 }
-                            </table>
+                            </View>
                         </ScrollView>
                     </View>
                 }

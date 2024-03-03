@@ -1,4 +1,4 @@
-import { Button, SafeAreaView, ScrollView, View } from "react-native-web";
+import { Button, SafeAreaView, ScrollView, View } from "react-native";
 import { CommonClass } from "../styles/Commonclass";
 import { dataview } from "../styles/Dataview";
 import { JPG_CONTENT_TYPE, PNG_CONTENT_TYPE } from "../helper/extrapropertise";
@@ -8,26 +8,28 @@ import { FileCard } from "./FileCard";
 
 const ResponsiveCard = ({ item }) => {
     return (
-        <SafeAreaView >
+        <View >
             <FileCard
                 item={item}
             />
-        </SafeAreaView>
+        </View>
     )
 }
 
 export const ShowTableFiles = ({ route, navigation }) => {
     const { key, value } = route?.params;
+    if (value.length === 0) {
+        return <Text style={CommonClass.chooseFile}>No Files</Text>
+    }
     return (
         <BodyList
+            key={key}
             body={
-                <ScrollView >
-                    <View>
-                        <table style={CommonClass.table}>
-                            {
-                                value.map((item) => <ResponsiveCard key={key} item={item} />)
-                            }
-                        </table>
+                <ScrollView>
+                    <View style={CommonClass.table}>
+                        {
+                            value.map((item, index) => <ResponsiveCard key={index} item={item} />)
+                        }
                     </View>
                 </ScrollView>
             }

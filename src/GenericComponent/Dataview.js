@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import LoadingSpinner from "./LoadingSpinneer";
-import { TextInput, View, Text, Button } from "react-native-web";
+// import { TextInput, View, Text, Button } from "react-native-web";
+import { Text, TextInput, View, Button } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView } from "react-native";
 import { dataview } from "../styles/Dataview";
@@ -38,7 +39,7 @@ function DataView({ queryFunction, queryKey, getSearchableValue, Card, DetailedE
         return (
             <View >
                 <View role="alert">
-                    {error}
+                    <Text>Something Went Wrong</Text>
                 </View>
             </View>
         )
@@ -46,24 +47,23 @@ function DataView({ queryFunction, queryKey, getSearchableValue, Card, DetailedE
 
     if (data) {
         return (
-            <SafeAreaView style={dataview.container}>
-                <View style={dataview.DataviewHeader}>
-                </View>
+            <View style={{ padding: 10 }}>
                 <View style={dataview.stickyInput} >
                     <TextInput
+
                         style={dataview.input}
-                        onChange={(e) => setSearchString(e.target.value)}
+                        onChangeText={(e) => setSearchString(e)}
                         placeholder="Search"
                     />
                     {
                         newDataButton ?
                             <View style={dataview.textStyle}>
-                                {newDataButton}
-                            </View> : null
+                                <Text>{newDataButton}</Text>
+                            </View> : <View></View>
                     }
                 </View>
-                <View style={dataview.heightAndOverflow}>
-                    <ScrollView  >
+                <ScrollView  >
+                    <View style={dataview.heightAndOverflow}>
                         <View >
                             {
                                 data && data.length === 0 ?
@@ -75,18 +75,19 @@ function DataView({ queryFunction, queryKey, getSearchableValue, Card, DetailedE
                                     :
                                     <View >
                                         {
-                                            data.map((item, index) =>
+                                            data?.map((item, index) =>
                                                 <View style={dataview.cardContainer} key={index} >
-                                                    <Card item={item} navigation={navigation} setSelectedItem = {setSelectedItem}></Card>
+                                                    <Card item={item} navigation={navigation} setSelectedItem={setSelectedItem}></Card>
                                                 </View>
                                             )
                                         }
+                                        <Text>End</Text>
                                     </View>
                             }
                         </View>
-                    </ScrollView>
-                </View>
-            </SafeAreaView >
+                    </View>
+                </ScrollView>
+            </View>
         )
     }
 }

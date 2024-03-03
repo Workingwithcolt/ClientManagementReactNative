@@ -2,13 +2,17 @@
 import { UPDATE_ON_ACCOUNT, endpoints } from "../Endpoints/endpoints"
 import { NODATA } from "../helper/extrapropertise"
 import DataView from "../GenericComponent/Dataview"
-import { Button, SafeAreaView, View } from "react-native-web"
+// import { Button, SafeAreaView, View } from "react-native-web"
+import { Button, SafeAreaView, View, TouchableOpacity } from "react-native"
 import { ProjectDetailView } from "./ProjectDetailView"
 import { Card, Text } from 'react-native-paper';
 import { ProjectModal } from "../GenericComponent/ProjectModal"
 import { useState } from "react"
 import LoadingSpinner from "../GenericComponent/LoadingSpinneer"
 import { useQueryClient } from "@tanstack/react-query"
+import { CommonClass } from "../styles/Commonclass"
+import { AntDesign } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const ResponsiveCard = ({ item, navigation, setSelectedItem }) => {
     const [modalVisible, setModalVisible] = useState(false);
@@ -46,7 +50,7 @@ const ResponsiveCard = ({ item, navigation, setSelectedItem }) => {
     }
 
     return (
-        <Card style={{ width: "100%" }}>
+        <Card style={{ width: "100%", padding: 5 }}>
             <Card.Content>
                 <Text variant="titleLarge"> {item.clientName || NODATA}</Text>
                 <Text variant="bodyMedium"> {item.email}</Text>
@@ -60,7 +64,7 @@ const ResponsiveCard = ({ item, navigation, setSelectedItem }) => {
                         modalVisible={modalVisible}
                         setModalVisible={setModalVisible}
                     />
-                    : <></>
+                    : <View></View>
             }
 
             {
@@ -73,14 +77,21 @@ const ResponsiveCard = ({ item, navigation, setSelectedItem }) => {
                     </View>)
                         : status.isSuccess ?
                             (<View>
-                                Deleted Successfully !!
+                                <Text>Deleted Successfully !!</Text>
                             </View>)
                             :
-                            (<Card.Actions>
-                                <Button style={{ paddingRight: '10px' }} title="detail" onPress={() => setSelectedItem(item)} />
-                                <Button title={"edit"} onPress={() => setModalVisible(true)} />
-                                <Button title="delete" onPress={async () => await deleteItem(item)} />
-                            </Card.Actions>)}
+                            (<View style={{ display: "flex", flexDirection: 'row', justifyContent: "flex-end", gap: 10 }}>
+                                <TouchableOpacity style={CommonClass.AddButton} onPress={() => setSelectedItem(item)} >
+                                    <MaterialCommunityIcons name="account-details" size={24} color="black" />
+                                </TouchableOpacity>
+                                <TouchableOpacity style={CommonClass.AddButton} onPress={() => setModalVisible(true)}>
+                                    <AntDesign name="edit" size={24} color="black" />
+                                </TouchableOpacity>
+                                <TouchableOpacity style={CommonClass.AddButton} onPress={async () => await deleteItem(item)}  >
+                                    <AntDesign name="delete" size={24} color="black" />
+                                </TouchableOpacity>
+                            </View>)
+            }
         </Card>
     )
 }
@@ -100,17 +111,15 @@ export const Projects = ({ navigation }) => {
     }
 
     return (
-        <SafeAreaView>
-            <DataView
-                queryFunction={queryFunction}
-                queryKey={queryKey}
-                getSearchableValue={getValueToSearch}
-                Card={ResponsiveCard}
-                dataviewTitle={"Projects"}
-                navigation={navigation}
-                DetailedElement={ProjectDetailView}
-            />
-        </SafeAreaView>
+        <DataView
+            queryFunction={queryFunction}
+            queryKey={queryKey}
+            getSearchableValue={getValueToSearch}
+            Card={ResponsiveCard}
+            dataviewTitle={"Projects"}
+            navigation={navigation}
+            DetailedElement={ProjectDetailView}
+        />
     )
 
 }

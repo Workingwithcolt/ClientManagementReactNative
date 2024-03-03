@@ -5,6 +5,7 @@ import logo from '../../assets/mainlogo.png'
 import { button1 } from '../common/button'
 import { errormessage, formgroup, head1, head2, input, label, link, link2 } from '../common/formcss'
 import { urlHead } from '../helper/extrapropertise'
+import e from 'cors'
 
 const Login = ({ navigation }) => {
     const [fdata, setFdata] = useState({
@@ -15,13 +16,13 @@ const Login = ({ navigation }) => {
     const [errormsg, setErrormsg] = useState(null);
 
     const Sendtobackend = () => {
-        // console.log(fdata);
+        console.log(fdata);
         if (fdata.email == '' || fdata.password == '') {
             setErrormsg('All fields are required');
             return;
         }
         else {
-            fetch( `http://${urlHead}/signin`, {
+            fetch( `https://${urlHead}/signin`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -30,16 +31,18 @@ const Login = ({ navigation }) => {
             })
                 .then(res => res.json()).then(
                     data => {
-                        // console.log(data);
+                        console.log(data);
                         if (data.error) {
                             setErrormsg(data.error);
                         }
                         else {
-                            alert('logged successfully');
+                            // alert('logged successfully');
                             navigation.navigate('homepage');
                         }
                     }
-                )
+                ).catch((e)=>{
+                    console.log(e)
+                })
         }
     }
     return (

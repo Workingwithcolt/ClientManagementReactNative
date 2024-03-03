@@ -2,7 +2,7 @@ export const dataview = {
     textStyle: {
         flex: 1,
         color: '#000',
-        fontSize: 16,
+        // fontSize: 16,
         paddingHorizontal: 10,
         paddingVertical: 5,
         borderRadius: 8,
@@ -46,19 +46,17 @@ export const dataview = {
     },
     cardContainer: {
         display: "flex",
-        flexWrap: "wrap",
-        marginBottom: "10px",
-        alignItems: "center"
+        padding:5
     },
     stickyInput: {
         position: "sticky",
         top: "20px",
         zIndex: 100,
-        backgroundColor: '#fff',
         opacity: 1,
     },
     heightAndOverflow: {
         height: "auto",
+        padding:10,
     },
     DataviewHeader: {
         display: "flex",
@@ -94,7 +92,12 @@ export const dataview = {
       fileContainer:{
         display:"flex",
         flexDirection:'column',
-        gap:0
+        gap:0,
+        marginBottom:5,
+        borderWidth: 1,
+        borderColor: "thistle",
+        borderRadius: 5,
+        padding:5
       }
 
 };
