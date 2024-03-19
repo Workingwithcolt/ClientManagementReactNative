@@ -117,7 +117,7 @@ export const ProjectModal = ({ init = {}, onSubmit, modalVisible, setModalVisibl
     var stausClass = (isPending || isSuccess) ? {
         position: 'relative', top: '50%', width: '80%', backgroundColor: 'white', padding: 20, borderRadius: 10
     } : { backgroundColor: 'white', padding: 20, borderRadius: 10 }
-   
+
 
 
     // console.log(state);
@@ -158,7 +158,7 @@ export const ProjectModal = ({ init = {}, onSubmit, modalVisible, setModalVisibl
                                                             <Addproperty
                                                                 Onchange={Onchange}
                                                                 element={element}
-                                                                Upload={Upload}
+                                                                onUpload={Upload}
                                                                 state={state}
                                                             />
                                                         </View>
@@ -218,7 +218,7 @@ export const ProjectModal = ({ init = {}, onSubmit, modalVisible, setModalVisibl
                                                 </TouchableOpacity>
                                             </View>
                                             <Divider />
-                                            <Text style={CommonClass.sectionTitle}>Section 4</Text>
+                                            <Text style={CommonClass.sectionTitle}>Working Drawing</Text>
                                             {
                                                 Section4.map(element => {
                                                     return (
@@ -227,7 +227,7 @@ export const ProjectModal = ({ init = {}, onSubmit, modalVisible, setModalVisibl
                                                             <Addproperty
                                                                 Onchange={Onchange}
                                                                 element={element}
-                                                                Upload={Upload}
+                                                                onUpload={Upload}
                                                                 state={state}
                                                                 handleDelete={handleDelete}
                                                             />
@@ -236,7 +236,7 @@ export const ProjectModal = ({ init = {}, onSubmit, modalVisible, setModalVisibl
                                                 })
                                             }
                                             <Divider />
-                                            <Text style={CommonClass.sectionTitle}>Section 5: Add RCC Drawing</Text>
+                                            <Text style={CommonClass.sectionTitle}> Add RCC Drawing</Text>
                                             <View>
                                                 {
                                                     state?.[Propertylist.RCCDrawing1.name] && Object.entries(state[Propertylist.RCCDrawing1.name])?.map(([key, value], index) => {
@@ -262,29 +262,7 @@ export const ProjectModal = ({ init = {}, onSubmit, modalVisible, setModalVisibl
                                                 </TouchableOpacity>
                                             </View>
                                             <Divider />
-                                            <Text style={CommonClass.sectionTitle}>Section 5</Text>
-                                            {
-                                                Section5.map(element => {
-                                                    let value = undefined
-                                                    if (element.type !== SchemaTypes.file) {
-                                                        value = state[element.name] ? state[element.name] : ""
-                                                    }
-                                                    return (
-                                                        <View>
-                                                            <Text>{element.placeholder}</Text>
-                                                            <Addproperty
-                                                                Onchange={Onchange}
-                                                                element={element}
-                                                                onUpload={Upload}
-                                                                state={state}
-                                                                handleDelete={handleDelete}
-                                                            />
-                                                        </View>
-                                                    )
-                                                })
-                                            }
-                                            <Divider />
-                                            <Text style={CommonClass.sectionTitle}>Section 5:Add Slab files</Text>
+                                            <Text style={CommonClass.sectionTitle}>Add Slab files</Text>
                                             <View>
                                                 {
                                                     state?.[Propertylist.Slab.name] && Object.entries(state[Propertylist.Slab.name])?.map(([key, value], index) => {

@@ -103,14 +103,14 @@ export const Propertylist = {
     },
     plinth: {
         name: "plinth",
-        placeholder: "plinth",
+        placeholder: "plinthDate",
         style: {
             height: 40,
             margin: 12,
             borderWidth: 1,
             padding: 10,
         },
-        type: SchemaTypes.String
+        type: SchemaTypes.DATE
     },
     buildingCompletionDate: {
         name: "buildingCompletionDate",
@@ -121,7 +121,7 @@ export const Propertylist = {
             borderWidth: 1,
             padding: 10,
         },
-        type: SchemaTypes.String
+        type: SchemaTypes.DATE
     }, pan: {
         name: "pan",
         placeholder: "pan",
@@ -197,7 +197,7 @@ export const Propertylist = {
             borderWidth: 1,
             padding: 10,
         },
-        type: SchemaTypes.String
+        type: SchemaTypes.file
     }, AllElevation: {
         name: "AllElevation",
         placeholder: "AllElevation",
@@ -207,17 +207,17 @@ export const Propertylist = {
             borderWidth: 1,
             padding: 10,
         },
-        type: SchemaTypes.String
+        type: SchemaTypes.file
     }, toilet: {
         name: "toilet",
-        placeholder: "toilet",
+        placeholder: "Plumbing toilet",
         style: {
             height: 40,
             margin: 12,
             borderWidth: 1,
             padding: 10,
         },
-        type: SchemaTypes.String
+        type: SchemaTypes.file
     }, submissionDate: {
         name: "submissionDate",
         placeholder: "submissionDate",
@@ -292,7 +292,7 @@ export const Propertylist = {
             borderWidth: 1,
             padding: 10,
         },
-        type: SchemaTypes.String
+        type: SchemaTypes.file
     },
     PleanthBeam: {
         name: "PleanthBeam",
@@ -303,7 +303,7 @@ export const Propertylist = {
             borderWidth: 1,
             padding: 10,
         },
-        type: SchemaTypes.String
+        type: SchemaTypes.file
     },
     StairCaseDraw: {
         name: "StairCaseDraw",
@@ -358,7 +358,7 @@ export const Propertylist = {
             borderWidth: 1,
             padding: 10,
         },
-        type: SchemaTypes.String
+        type: SchemaTypes.file
     },
     SanctionDrawing: {
         name: "SanctionDrawing",
@@ -385,7 +385,7 @@ export const Propertylist = {
     },
     ReviseSanction: {
         name: "ReviseSanction",
-        placeholder: "ReviseSanction",
+        placeholder: "ReviseSanctionDrawing",
         style: {
             height: 40,
             margin: 12,
@@ -415,16 +415,207 @@ export const Propertylist = {
             padding: 10,
         },
         type: SchemaTypes.file
-    }
+    },
+    CardFile: {
+        name: "CardFile",
+        placeholder: "Card file",
+        style: {
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
+        },
+        type: SchemaTypes.file
+    },
+    Map: {
+        name: "Map",
+        placeholder: "Map file",
+        style: {
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
+        },
+        type: SchemaTypes.file
+    },
+    gsNo: {
+        name: "gsNo",
+        placeholder: "gsNo file",
+        style: {
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
+        },
+        type: SchemaTypes.String
+    },
+    gsfile: {
+        name: "gsfile",
+        placeholder: "Gs file",
+        style: {
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
+        },
+        type: SchemaTypes.file
+    },
+    mahareraNo: {
+        name: "mahareraNo",
+        placeholder: "mahareraNo ",
+        style: {
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
+        },
+        type: SchemaTypes.String
+    },
+    mahareraFile: {
+        name: "mahareraFile",
+        placeholder: "maharera File ",
+        style: {
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
+        },
+        type: SchemaTypes.file
+    },
+    institudeNo: {
+        name: "institudeNo",
+        placeholder: "institudeNo ",
+        style: {
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
+        },
+        type: SchemaTypes.String
+    },
+    panFile: {
+        name: "panFile",
+        placeholder: "panFile ",
+        style: {
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
+        },
+        type: SchemaTypes.file
+    },
+    adharFile: {
+        name: "adharFile",
+        placeholder: "adharFile ",
+        style: {
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
+        },
+        type: SchemaTypes.file
+    },
+    additionalDetailCommentRemark: {
+        name: "additionalDetailCommentRemark",
+        placeholder: "additionalDetailCommentRemark ",
+        style: {
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
+        },
+        type: SchemaTypes.String
+    },
+    CompletionDrawingFile: {
+        name: "CompletionDrawingFile",
+        placeholder: "CompletionDrawingFile ",
+        style: {
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
+        },
+        type: SchemaTypes.file
+    },
+    AllSectionFile: {
+        name: "AllSectionFile",
+        placeholder: "AllSectionFile ",
+        style: {
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
+        },
+        type: SchemaTypes.file
+    },
+    AllElectricDrawingFile: {
+        name: "AllElectricDrawingFile",
+        placeholder: "AllElectricDrawingFile ",
+        style: {
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
+        },
+        type: SchemaTypes.file
+    },
+    AllGrillsAndRailingFile: {
+        name: "AllGrillsAndRailingFile",
+        placeholder: "AllGrillsAndRailingFile ",
+        style: {
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
+        },
+        type: SchemaTypes.file
+    },
+    tileLayoutFile: {
+        name: "tileLayoutFile",
+        placeholder: "tileLayoutFile ",
+        style: {
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
+        },
+        type: SchemaTypes.file
+    },
+    ReviseSanctionLetterFile: {
+        name: "ReviseSanctionLetterFile",
+        placeholder: "ReviseSanctionLetterFile ",
+        style: {
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
+        },
+        type: SchemaTypes.file
+    },
+    siteAddress: {
+        name: "siteAddress",
+        placeholder: "siteAddress ",
+        style: {
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
+        },
+        type: SchemaTypes.String
+    },
+
 }
 
 export const Section6 = [
     Propertylist.SanctionDrawing,
     Propertylist.SanctionLetter,
     Propertylist.pleanthCompletion,
-    Propertylist.ReviseSanction,
-    Propertylist.CompletionLetter,
-    Propertylist.Drawing
+    Propertylist.ReviseSanctionLetterFile,
+    Propertylist.ReviseSanction,//file
+    Propertylist.CompletionLetter,//file
+    Propertylist.Drawing,//file
+    Propertylist.CompletionDate,
+    Propertylist.CompletionDrawingFile//file
 ]
 export const Section1 = [
     Propertylist.title,
@@ -436,20 +627,36 @@ export const Section1 = [
     Propertylist.plinth,
     Propertylist.buildingCompletionDate,
     Propertylist.pin,
+    Propertylist.siteAddress,
+    Propertylist.CardFile,//file
+    Propertylist.Map,//file
+    Propertylist.gsNo,//String
+    Propertylist.gsfile,//file
+    Propertylist.mahareraNo,//String
+    Propertylist.mahareraFile,//file
+    Propertylist.institudeNo,//String
     Propertylist.pan,
+    Propertylist.panFile,//file
+    Propertylist.adharFile,//file
     Propertylist.adhar,
-    Propertylist.email
+    Propertylist.email,
+    Propertylist.additionalDetailCommentRemark,//string
 ]
 
 export const Section4 = [
-    Propertylist.AllFloorPlan,
-    Propertylist.AllElevation,
+    Propertylist.AllFloorPlan,//file
+    Propertylist.AllElevation,//file
+    Propertylist.AllSectionFile,//file
+    Propertylist.AllElectricDrawingFile,//file
+    Propertylist.AllGrillsAndRailingFile,//file
+    Propertylist.tileLayoutFile,//file
     Propertylist.toilet,
+    Propertylist.ColumnFooting,
+    Propertylist.PleanthBeam,
+    Propertylist.StairCaseDraw,
     Propertylist.CompletionDate
 ]
 
 export const Section5 = [
-    Propertylist.ColumnFooting,
-    Propertylist.PleanthBeam,
-    Propertylist.StairCaseDraw,
+    Propertylist.Slab// we can add multiple slab file 
 ]
